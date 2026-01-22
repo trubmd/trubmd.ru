@@ -2,8 +2,11 @@
 .callout[data-callout="problem"] {
     --callout-color: 6, 121, 167; 
     border: 2px solid #0679a7 !important; 
-    /* Прозрачный фон позволяет видеть фон темы (светлой или темной) */
+    
+    /* Убираем заливку, чтобы блок стал прозрачным */
     background-color: transparent !important;
+    background: transparent !important;
+
     border-radius: 6px !important;
     margin: 15px 0 !important;
     padding: 0 !important;
@@ -11,7 +14,7 @@
     padding-bottom: 0px !important;
 }
 
-/* 2. Шапка задачи */
+/* 2. Шапка задачи (синяя) */
 .callout[data-callout="problem"] > .callout-title {
     background-color: #0679a7 !important; 
     padding: 8px 15px !important;
@@ -26,16 +29,21 @@
 /* 3. Тело задачи */
 .callout[data-callout="problem"] > .callout-content {
     padding: 15px 15px 5px 15px !important;  
+    
+    /* Принудительная прозрачность */
     background-color: transparent !important;
-    /* currentColor заставляет текст подстраиваться под тему автоматически */
+    background: transparent !important;
+    
+    /* currentColor — текст берет цвет из настроек темы (черный или белый) */
     color: currentColor !important;
 }
 
-/* 4. Блок ответа ВНУТРИ задачи (с линией) */
+/* 4. Блок ответа ВНУТРИ задачи */
 .callout[data-callout="problem"] .callout[data-callout="answer"] {
     border: none !important;
     border-top: 1px solid #0679a7 !important; 
     background-color: transparent !important;
+    background: transparent !important;
     margin-top: 15px !important; 
     margin-left: -15px !important;
     margin-right: -15px !important;
@@ -44,32 +52,33 @@
     margin-bottom: 0px !important;
 }
 
-/* Заголовок "Ответ" ВНУТРИ задачи */
+/* Заголовок "Ответ" */
 .callout[data-callout="problem"] .callout[data-callout="answer"] > .callout-title {
     background-color: transparent !important;
+    background: transparent !important;
     font-style: normal !important; 
     font-weight: normal !important; 
     font-size: 0.95em !important;
     padding: 0 !important;
-    /* Используем стандартный приглушенный цвет */
     color: gray !important; 
     min-height: 0 !important;
 }
 
-/* Текст ответа ВНУТРИ задачи */
+/* Текст ответа */
 .callout[data-callout="problem"] .callout[data-callout="answer"] > .callout-content {
+    background-color: transparent !important;
+    color: currentColor !important;
     font-style: normal !important; 
     padding: 2px 0 2px 0 !important;
     margin: 0 !important;
-    color: currentColor !important;
 }
 
-/* Стрелочка ВНУТРИ задачи */
+/* Стрелочка */
 .callout[data-callout="problem"] .callout[data-callout="answer"] > .callout-title .callout-fold-icon {
     color: #0679a7 !important; 
 }
 
-/* Контейнер для разделения задачи на колонки */
+/* 5. Геометрия колонок */
 .task-layout {
     display: flex !important;
     flex-direction: row !important;
@@ -77,21 +86,21 @@
     align-items: flex-start !important;
 }
 
-/* Левая часть с текстом */
 .task-text {
     flex: 1 !important;
 }
 
-/* Правая часть с картинкой */
 .task-image {
     flex: 0 0 auto !important;
     max-width: 250px !important;
     text-align: right !important;
 }
 
-/* Инверсия картинок (скриншотов на белом фоне) для темной темы браузера */
+/* 6. Адаптация картинок и формул для темной темы браузера */
 @media (prefers-color-scheme: dark) {
-    .task-image img {
-        filter: invert(0.9) hue-rotate(180deg) !important;
+    /* Если фон страницы темный, инвертируем скриншоты с белым фоном */
+    .task-image img, 
+    .callout-content img {
+        filter: invert(0.9) hue-rotate(180deg) brightness(1.1) !important;
     }
 }
