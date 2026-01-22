@@ -2,19 +2,19 @@
 .callout[data-callout="problem"] {
     --callout-color: 6, 121, 167; 
     border: 2px solid #0679a7 !important; 
-    background-color: white !important;
+    /* var(--background-primary) адаптируется под тему (белый/темный) */
+    background-color: var(--background-primary) !important;
     border-radius: 6px !important;
     margin: 15px 0 !important;
     padding: 0 !important;
     overflow: hidden !important;
-    padding-bottom: 0px !important;
 }
 
 /* 2. Шапка задачи */
 .callout[data-callout="problem"] > .callout-title {
     background-color: #0679a7 !important; 
     padding: 8px 15px !important;
-    color: #ffffff !important; 
+    color: #ffffff !important; /* В шапке текст всегда белый для контраста с синим */
     font-weight: bold !important;
 }
 
@@ -25,14 +25,15 @@
 /* 3. Тело задачи */
 .callout[data-callout="problem"] > .callout-content {
     padding: 15px 15px 5px 15px !important;  
-    background-color: #ffffff !important;
-    color: #000 !important;
+    background-color: var(--background-primary) !important;
+    /* var(--text-normal) автоматически становится светлым в темной теме */
+    color: var(--text-normal) !important;
 }
 
 /* 4. Блок ответа ВНУТРИ задачи (с линией) */
 .callout[data-callout="problem"] .callout[data-callout="answer"] {
     border: none !important;
-    border-top: 1px solid #0679a7 !important; /* Линия только здесь */
+    border-top: 1px solid #0679a7 !important; 
     background-color: transparent !important;
     margin-top: 15px !important; 
     margin-left: -15px !important;
@@ -49,7 +50,8 @@
     font-weight: normal !important; 
     font-size: 0.95em !important;
     padding: 0 !important;
-    color: #747474 !important; 
+    /* var(--text-muted) - приглушенный серый, работающий в обеих темах */
+    color: var(--text-muted) !important; 
     min-height: 0 !important;
 }
 
@@ -58,7 +60,7 @@
     font-style: normal !important; 
     padding: 2px 0 2px 0 !important;
     margin: 0 !important;
-    color: #000 !important;
+    color: var(--text-normal) !important;
 }
 
 /* Стрелочка ВНУТРИ задачи */
@@ -70,18 +72,27 @@
 .task-layout {
     display: flex !important;
     flex-direction: row !important;
-    gap: 20px !important;       /* Расстояние между текстом и картинкой */
-    align-items: flex-start !important; /* Выравнивание по верхнему краю */
+    gap: 20px !important;
+    align-items: flex-start !important;
 }
 
 /* Левая часть с текстом */
 .task-text {
-    flex: 1 !important;         /* Занимает всё свободное место */
+    flex: 1 !important;
 }
 
 /* Правая часть с картинкой */
 .task-image {
-    flex: 0 0 auto !important;  /* Не растягивается */
-    max-width: 250px !important; /* Максимальная ширина колонки для фото */
+    flex: 0 0 auto !important;
+    max-width: 250px !important;
     text-align: right !important;
 }
+
+/* Дополнительно: Инверсия изображений в темной теме (если нужно) */
+/* Если ваши скриншоты на белом фоне и "режут глаз" в темной теме, 
+   раскомментируйте код ниже: */
+/*
+.theme-dark .task-image img {
+    filter: brightness(0.8) contrast(1.2);
+}
+*/
