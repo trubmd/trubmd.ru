@@ -1,37 +1,46 @@
-/* 1. Основной контейнер задачи */
+/* 1. ОПРЕДЕЛЕНИЕ ЦВЕТОВ (Универсально) */
+:root {
+    --p-accent: #0679a7;
+    --p-bg: #ffffff;
+    --p-text: #000000;
+    --p-muted: #747474;
+}
+
+/* Если в системе или браузере включена темная тема */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --p-bg: #1e1e1e;   /* Цвет фона для темной темы */
+        --p-text: #e0e0e0; /* Цвет текста для темной темы */
+        --p-muted: #a0a0a0;
+    }
+}
+
+/* Специально для Obsidian (чтобы цвета точно совпадали с темой приложения) */
+.theme-dark {
+    --p-bg: var(--background-primary);
+    --p-text: var(--text-normal);
+    --p-muted: var(--text-muted);
+}
+.theme-light {
+    --p-bg: var(--background-primary);
+    --p-text: var(--text-normal);
+    --p-muted: var(--text-muted);
+}
+
+/* 2. ОСНОВНОЙ КОНТЕЙНЕР (Геометрия без изменений) */
 .callout[data-callout="problem"] {
     --callout-color: 6, 121, 167; 
-    border: 2px solid #0679a7 !important; 
-    
-    /* Цвета для светлой темы (и для Obsidian, и для браузера) */
-    background-color: #ffffff !important;
-    color: #000000 !important;
-
+    border: 2px solid var(--p-accent) !important; 
+    background-color: var(--p-bg) !important;
     border-radius: 6px !important;
     margin: 15px 0 !important;
     padding: 0 !important;
     overflow: hidden !important;
 }
 
-/* ЛОГИКА ДЛЯ OBSIDIAN (используем внутренние переменные) */
-.theme-dark .callout[data-callout="problem"],
-.theme-light .callout[data-callout="problem"] {
-    background-color: var(--background-primary) !important;
-    color: var(--text-normal) !important;
-}
-
-/* ЛОГИКА ДЛЯ БРАУЗЕРА (HTML) — когда включена темная тема в системе */
-@media (prefers-color-scheme: dark) {
-    /* Если мы НЕ в Obsidian (в браузере), принудительно ставим цвета */
-    :not(.theme-dark):not(.theme-light) .callout[data-callout="problem"] {
-        background-color: #1e1e1e !important;
-        color: #dcddde !important;
-    }
-}
-
-/* 2. Шапка задачи */
+/* 3. ШАПКА */
 .callout[data-callout="problem"] > .callout-title {
-    background-color: #0679a7 !important; 
+    background-color: var(--p-accent) !important; 
     padding: 8px 15px !important;
     color: #ffffff !important; 
     font-weight: bold !important;
@@ -41,18 +50,17 @@
     display: none !important;
 }
 
-/* 3. Тело задачи */
+/* 4. ТЕЛО ЗАДАЧИ */
 .callout[data-callout="problem"] > .callout-content {
     padding: 15px 15px 5px 15px !important;  
-    /* Наследует цвет от родителя, но на всякий случай дублируем логику адаптации */
-    background-color: inherit !important;
-    color: inherit !important;
+    background-color: var(--p-bg) !important;
+    color: var(--p-text) !important;
 }
 
-/* 4. Блок ответа ВНУТРИ задачи */
+/* 5. БЛОК ОТВЕТА (Геометрия без изменений) */
 .callout[data-callout="problem"] .callout[data-callout="answer"] {
     border: none !important;
-    border-top: 1px solid #0679a7 !important; 
+    border-top: 1px solid var(--p-accent) !important; 
     background-color: transparent !important;
     margin-top: 15px !important; 
     margin-left: -15px !important;
@@ -62,39 +70,28 @@
     margin-bottom: 0px !important;
 }
 
-/* Заголовок "Ответ" */
 .callout[data-callout="problem"] .callout[data-callout="answer"] > .callout-title {
     background-color: transparent !important;
     font-style: normal !important; 
     font-weight: normal !important; 
     font-size: 0.95em !important;
     padding: 0 !important;
-    color: #747474 !important; /* Цвет для светлой темы */
+    color: var(--p-muted) !important; 
     min-height: 0 !important;
 }
 
-/* Адаптация заголовка "Ответ" в темной теме (Obsidian + Браузер) */
-.theme-dark .callout[data-callout="problem"] .callout[data-callout="answer"] > .callout-title,
-@media (prefers-color-scheme: dark) {
-    :not(.theme-light) .callout[data-callout="problem"] .callout[data-callout="answer"] > .callout-title {
-        color: #a3a3a3 !important;
-    }
-}
-
-/* Текст ответа */
 .callout[data-callout="problem"] .callout[data-callout="answer"] > .callout-content {
     font-style: normal !important; 
     padding: 2px 0 2px 0 !important;
     margin: 0 !important;
-    color: inherit !important;
+    color: var(--p-text) !important;
 }
 
-/* Стрелочка */
 .callout[data-callout="problem"] .callout[data-callout="answer"] > .callout-title .callout-fold-icon {
-    color: #0679a7 !important; 
+    color: var(--p-accent) !important; 
 }
 
-/* 5. Геометрия колонок (без изменений) */
+/* 6. РАЗМЕТКА (Layout) */
 .task-layout {
     display: flex !important;
     flex-direction: row !important;
