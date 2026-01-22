@@ -1,37 +1,9 @@
-/* 1. ОПРЕДЕЛЕНИЕ ПЕРЕМЕННЫХ (Логика адаптации) */
-:root {
-    --task-bg: #ffffff;
-    --task-text: #000000;
-    --task-muted: #747474;
-    --task-accent: #0679a7;
-}
-
-/* Для браузера: если в системе включена темная тема */
-@media (prefers-color-scheme: dark) {
-    :root {
-        --task-bg: #1e1e1e;   /* Темный фон для HTML */
-        --task-text: #e0e0e0; /* Светлый текст для HTML */
-        --task-muted: #a0a0a0;
-    }
-}
-
-/* Для Obsidian: используем родные переменные приложения */
-.theme-dark {
-    --task-bg: var(--background-primary);
-    --task-text: var(--text-normal);
-    --task-muted: var(--text-muted);
-}
-.theme-light {
-    --task-bg: var(--background-primary);
-    --task-text: var(--text-normal);
-    --task-muted: var(--text-muted);
-}
-
-/* 2. ОСНОВНОЙ КОНТЕЙНЕР ЗАДАЧИ */
+/* 1. Основной контейнер задачи */
 .callout[data-callout="problem"] {
     --callout-color: 6, 121, 167; 
-    border: 2px solid var(--task-accent) !important; 
-    background-color: var(--task-bg) !important; /* ЗАМЕНЕНО */
+    border: 2px solid #0679a7 !important; 
+    /* Прозрачный фон позволяет видеть фон темы (светлой или темной) */
+    background-color: transparent !important;
     border-radius: 6px !important;
     margin: 15px 0 !important;
     padding: 0 !important;
@@ -39,9 +11,9 @@
     padding-bottom: 0px !important;
 }
 
-/* 3. ШАПКА ЗАДАЧИ */
+/* 2. Шапка задачи */
 .callout[data-callout="problem"] > .callout-title {
-    background-color: var(--task-accent) !important; 
+    background-color: #0679a7 !important; 
     padding: 8px 15px !important;
     color: #ffffff !important; 
     font-weight: bold !important;
@@ -51,17 +23,18 @@
     display: none !important;
 }
 
-/* 4. ТЕЛО ЗАДАЧИ */
+/* 3. Тело задачи */
 .callout[data-callout="problem"] > .callout-content {
     padding: 15px 15px 5px 15px !important;  
-    background-color: var(--task-bg) !important; /* ЗАМЕНЕНО */
-    color: var(--task-text) !important;         /* ЗАМЕНЕНО */
+    background-color: transparent !important;
+    /* currentColor заставляет текст подстраиваться под тему автоматически */
+    color: currentColor !important;
 }
 
-/* 5. БЛОК ОТВЕТА ВНУТРИ */
+/* 4. Блок ответа ВНУТРИ задачи (с линией) */
 .callout[data-callout="problem"] .callout[data-callout="answer"] {
     border: none !important;
-    border-top: 1px solid var(--task-accent) !important; 
+    border-top: 1px solid #0679a7 !important; 
     background-color: transparent !important;
     margin-top: 15px !important; 
     margin-left: -15px !important;
@@ -71,31 +44,32 @@
     margin-bottom: 0px !important;
 }
 
-/* ЗАГОЛОВОК "ОТВЕТ" */
+/* Заголовок "Ответ" ВНУТРИ задачи */
 .callout[data-callout="problem"] .callout[data-callout="answer"] > .callout-title {
     background-color: transparent !important;
     font-style: normal !important; 
     font-weight: normal !important; 
     font-size: 0.95em !important;
     padding: 0 !important;
-    color: var(--task-muted) !important; /* ЗАМЕНЕНО */
+    /* Используем стандартный приглушенный цвет */
+    color: gray !important; 
     min-height: 0 !important;
 }
 
-/* ТЕКСТ ОТВЕТА */
+/* Текст ответа ВНУТРИ задачи */
 .callout[data-callout="problem"] .callout[data-callout="answer"] > .callout-content {
     font-style: normal !important; 
     padding: 2px 0 2px 0 !important;
     margin: 0 !important;
-    color: var(--task-text) !important; /* ЗАМЕНЕНО */
+    color: currentColor !important;
 }
 
-/* СТРЕЛОЧКА */
+/* Стрелочка ВНУТРИ задачи */
 .callout[data-callout="problem"] .callout[data-callout="answer"] > .callout-title .callout-fold-icon {
-    color: var(--task-accent) !important; 
+    color: #0679a7 !important; 
 }
 
-/* 6. ГЕОМЕТРИЯ КОЛОНОК (БЕЗ ИЗМЕНЕНИЙ) */
+/* Контейнер для разделения задачи на колонки */
 .task-layout {
     display: flex !important;
     flex-direction: row !important;
@@ -103,17 +77,19 @@
     align-items: flex-start !important;
 }
 
+/* Левая часть с текстом */
 .task-text {
     flex: 1 !important;
 }
 
+/* Правая часть с картинкой */
 .task-image {
     flex: 0 0 auto !important;
     max-width: 250px !important;
     text-align: right !important;
 }
 
-/* Инверсия картинок для темной темы браузера */
+/* Инверсия картинок (скриншотов на белом фоне) для темной темы браузера */
 @media (prefers-color-scheme: dark) {
     .task-image img {
         filter: invert(0.9) hue-rotate(180deg) !important;
