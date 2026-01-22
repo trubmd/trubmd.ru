@@ -1,46 +1,47 @@
-/* 1. БАЗОВЫЕ ПЕРЕМЕННЫЕ (Универсальные) */
+/* 1. ОПРЕДЕЛЕНИЕ ПЕРЕМЕННЫХ (Логика адаптации) */
 :root {
-    --p-accent: #0679a7;
-    --p-bg: #ffffff;
-    --p-text: #000000;
-    --p-muted: #747474;
+    --task-bg: #ffffff;
+    --task-text: #000000;
+    --task-muted: #747474;
+    --task-accent: #0679a7;
 }
 
-/* 2. ЛОГИКА ДЛЯ ТЕМНОЙ ТЕМЫ (Браузер + Системная тема) */
+/* Для браузера: если в системе включена темная тема */
 @media (prefers-color-scheme: dark) {
     :root {
-        --p-bg: #1e1e1e !important;   
-        --p-text: #e0e0e0 !important; 
-        --p-muted: #a0a0a0 !important;
+        --task-bg: #1e1e1e;   /* Темный фон для HTML */
+        --task-text: #e0e0e0; /* Светлый текст для HTML */
+        --task-muted: #a0a0a0;
     }
 }
 
-/* 3. ЛОГИКА ДЛЯ ОБСИДИАНА (Светлая и Темная темы) */
+/* Для Obsidian: используем родные переменные приложения */
 .theme-dark {
-    --p-bg: var(--background-primary) !important;
-    --p-text: var(--text-normal) !important;
-    --p-muted: var(--text-muted) !important;
+    --task-bg: var(--background-primary);
+    --task-text: var(--text-normal);
+    --task-muted: var(--text-muted);
 }
 .theme-light {
-    --p-bg: var(--background-primary) !important;
-    --p-text: var(--text-normal) !important;
-    --p-muted: var(--text-muted) !important;
+    --task-bg: var(--background-primary);
+    --task-text: var(--text-normal);
+    --task-muted: var(--text-muted);
 }
 
-/* 4. ОСНОВНОЙ КОНТЕЙНЕР (Геометрия сохранена) */
+/* 2. ОСНОВНОЙ КОНТЕЙНЕР ЗАДАЧИ */
 .callout[data-callout="problem"] {
-    border: 2px solid var(--p-accent) !important; 
-    background-color: var(--p-bg) !important;
-    color: var(--p-text) !important;
+    --callout-color: 6, 121, 167; 
+    border: 2px solid var(--task-accent) !important; 
+    background-color: var(--task-bg) !important; /* ЗАМЕНЕНО */
     border-radius: 6px !important;
     margin: 15px 0 !important;
     padding: 0 !important;
     overflow: hidden !important;
+    padding-bottom: 0px !important;
 }
 
-/* 5. ШАПКА */
+/* 3. ШАПКА ЗАДАЧИ */
 .callout[data-callout="problem"] > .callout-title {
-    background-color: var(--p-accent) !important; 
+    background-color: var(--task-accent) !important; 
     padding: 8px 15px !important;
     color: #ffffff !important; 
     font-weight: bold !important;
@@ -50,40 +51,51 @@
     display: none !important;
 }
 
-/* 6. ТЕЛО ЗАДАЧИ */
+/* 4. ТЕЛО ЗАДАЧИ */
 .callout[data-callout="problem"] > .callout-content {
     padding: 15px 15px 5px 15px !important;  
-    background-color: var(--p-bg) !important;
-    color: var(--p-text) !important;
+    background-color: var(--task-bg) !important; /* ЗАМЕНЕНО */
+    color: var(--task-text) !important;         /* ЗАМЕНЕНО */
 }
 
-/* 7. БЛОК ОТВЕТА */
+/* 5. БЛОК ОТВЕТА ВНУТРИ */
 .callout[data-callout="problem"] .callout[data-callout="answer"] {
     border: none !important;
-    border-top: 1px solid var(--p-accent) !important; 
+    border-top: 1px solid var(--task-accent) !important; 
     background-color: transparent !important;
     margin-top: 15px !important; 
     margin-left: -15px !important;
     margin-right: -15px !important;
     padding: 8px 15px 5px 15px !important; 
+    border-radius: 0 !important;
+    margin-bottom: 0px !important;
 }
 
+/* ЗАГОЛОВОК "ОТВЕТ" */
 .callout[data-callout="problem"] .callout[data-callout="answer"] > .callout-title {
     background-color: transparent !important;
-    color: var(--p-muted) !important; 
+    font-style: normal !important; 
+    font-weight: normal !important; 
     font-size: 0.95em !important;
     padding: 0 !important;
+    color: var(--task-muted) !important; /* ЗАМЕНЕНО */
+    min-height: 0 !important;
 }
 
+/* ТЕКСТ ОТВЕТА */
 .callout[data-callout="problem"] .callout[data-callout="answer"] > .callout-content {
-    color: var(--p-text) !important;
+    font-style: normal !important; 
+    padding: 2px 0 2px 0 !important;
+    margin: 0 !important;
+    color: var(--task-text) !important; /* ЗАМЕНЕНО */
 }
 
-.callout[data-callout="problem"] .callout[data-callout="answer"] .callout-fold-icon {
-    color: var(--p-accent) !important; 
+/* СТРЕЛОЧКА */
+.callout[data-callout="problem"] .callout[data-callout="answer"] > .callout-title .callout-fold-icon {
+    color: var(--task-accent) !important; 
 }
 
-/* 8. РАЗМЕТКА КОЛОНОК */
+/* 6. ГЕОМЕТРИЯ КОЛОНОК (БЕЗ ИЗМЕНЕНИЙ) */
 .task-layout {
     display: flex !important;
     flex-direction: row !important;
@@ -91,16 +103,19 @@
     align-items: flex-start !important;
 }
 
-.task-text { flex: 1 !important; }
+.task-text {
+    flex: 1 !important;
+}
 
 .task-image {
     flex: 0 0 auto !important;
     max-width: 250px !important;
+    text-align: right !important;
 }
 
-/* Инверсия картинки для темной темы (чтобы не было белого пятна) */
+/* Инверсия картинок для темной темы браузера */
 @media (prefers-color-scheme: dark) {
     .task-image img {
-        filter: invert(0.9) hue-rotate(180deg); /* Инвертирует белый фон картинки в темный */
+        filter: invert(0.9) hue-rotate(180deg) !important;
     }
 }
