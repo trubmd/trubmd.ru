@@ -1,20 +1,42 @@
-/* 1. Основной контейнер задачи */
+/* 1. Настройка цветовой схемы */
 .callout[data-callout="problem"] {
+    /* Определяем цвета для светлой темы по умолчанию */
+    --task-accent: #0679a7;
+    --task-bg: #ffffff;
+    --task-text: #000000;
+    --task-muted: #747474;
+
     --callout-color: 6, 121, 167; 
-    border: 2px solid #0679a7 !important; 
-    /* var(--background-primary) адаптируется под тему (белый/темный) */
-    background-color: var(--background-primary) !important;
+    border: 2px solid var(--task-accent) !important; 
+    background-color: var(--task-bg) !important;
     border-radius: 6px !important;
     margin: 15px 0 !important;
     padding: 0 !important;
     overflow: hidden !important;
 }
 
+/* ЛОГИКА АДАПТАЦИИ: Темная тема в браузере (HTML) */
+@media (prefers-color-scheme: dark) {
+    .callout[data-callout="problem"] {
+        --task-bg: #1e1e1e;   /* Темный фон для браузера */
+        --task-text: #e0e0e0; /* Светлый текст для браузера */
+        --task-muted: #a0a0a0;
+    }
+}
+
+/* ЛОГИКА АДАПТАЦИИ: Внутри Obsidian (используем системные переменные темы) */
+.theme-dark .callout[data-callout="problem"],
+.theme-light .callout[data-callout="problem"] {
+    --task-bg: var(--background-primary);
+    --task-text: var(--text-normal);
+    --task-muted: var(--text-muted);
+}
+
 /* 2. Шапка задачи */
 .callout[data-callout="problem"] > .callout-title {
-    background-color: #0679a7 !important; 
+    background-color: var(--task-accent) !important; 
     padding: 8px 15px !important;
-    color: #ffffff !important; /* В шапке текст всегда белый для контраста с синим */
+    color: #ffffff !important; 
     font-weight: bold !important;
 }
 
@@ -25,15 +47,14 @@
 /* 3. Тело задачи */
 .callout[data-callout="problem"] > .callout-content {
     padding: 15px 15px 5px 15px !important;  
-    background-color: var(--background-primary) !important;
-    /* var(--text-normal) автоматически становится светлым в темной теме */
-    color: var(--text-normal) !important;
+    background-color: var(--task-bg) !important;
+    color: var(--task-text) !important;
 }
 
 /* 4. Блок ответа ВНУТРИ задачи (с линией) */
 .callout[data-callout="problem"] .callout[data-callout="answer"] {
     border: none !important;
-    border-top: 1px solid #0679a7 !important; 
+    border-top: 1px solid var(--task-accent) !important; 
     background-color: transparent !important;
     margin-top: 15px !important; 
     margin-left: -15px !important;
@@ -50,8 +71,7 @@
     font-weight: normal !important; 
     font-size: 0.95em !important;
     padding: 0 !important;
-    /* var(--text-muted) - приглушенный серый, работающий в обеих темах */
-    color: var(--text-muted) !important; 
+    color: var(--task-muted) !important; 
     min-height: 0 !important;
 }
 
@@ -60,12 +80,12 @@
     font-style: normal !important; 
     padding: 2px 0 2px 0 !important;
     margin: 0 !important;
-    color: var(--text-normal) !important;
+    color: var(--task-text) !important;
 }
 
 /* Стрелочка ВНУТРИ задачи */
 .callout[data-callout="problem"] .callout[data-callout="answer"] > .callout-title .callout-fold-icon {
-    color: #0679a7 !important; 
+    color: var(--task-accent) !important; 
 }
 
 /* Контейнер для разделения задачи на колонки */
@@ -88,11 +108,9 @@
     text-align: right !important;
 }
 
-/* Дополнительно: Инверсия изображений в темной теме (если нужно) */
-/* Если ваши скриншоты на белом фоне и "режут глаз" в темной теме, 
-   раскомментируйте код ниже: */
-/*
-.theme-dark .task-image img {
-    filter: brightness(0.8) contrast(1.2);
+/* Инверсия изображений в темной теме браузера */
+@media (prefers-color-scheme: dark) {
+    .task-image img {
+        filter: brightness(0.8) contrast(1.2);
+    }
 }
-*/
