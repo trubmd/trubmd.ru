@@ -1,40 +1,37 @@
-/* 1. Настройка цветовой схемы */
+/* 1. Основной контейнер задачи */
 .callout[data-callout="problem"] {
-    /* Определяем цвета для светлой темы по умолчанию */
-    --task-accent: #0679a7;
-    --task-bg: #ffffff;
-    --task-text: #000000;
-    --task-muted: #747474;
-
     --callout-color: 6, 121, 167; 
-    border: 2px solid var(--task-accent) !important; 
-    background-color: var(--task-bg) !important;
+    border: 2px solid #0679a7 !important; 
+    
+    /* Цвета для светлой темы (и для Obsidian, и для браузера) */
+    background-color: #ffffff !important;
+    color: #000000 !important;
+
     border-radius: 6px !important;
     margin: 15px 0 !important;
     padding: 0 !important;
     overflow: hidden !important;
 }
 
-/* ЛОГИКА АДАПТАЦИИ: Темная тема в браузере (HTML) */
-@media (prefers-color-scheme: dark) {
-    .callout[data-callout="problem"] {
-        --task-bg: #1e1e1e;   /* Темный фон для браузера */
-        --task-text: #e0e0e0; /* Светлый текст для браузера */
-        --task-muted: #a0a0a0;
-    }
-}
-
-/* ЛОГИКА АДАПТАЦИИ: Внутри Obsidian (используем системные переменные темы) */
+/* ЛОГИКА ДЛЯ OBSIDIAN (используем внутренние переменные) */
 .theme-dark .callout[data-callout="problem"],
 .theme-light .callout[data-callout="problem"] {
-    --task-bg: var(--background-primary);
-    --task-text: var(--text-normal);
-    --task-muted: var(--text-muted);
+    background-color: var(--background-primary) !important;
+    color: var(--text-normal) !important;
+}
+
+/* ЛОГИКА ДЛЯ БРАУЗЕРА (HTML) — когда включена темная тема в системе */
+@media (prefers-color-scheme: dark) {
+    /* Если мы НЕ в Obsidian (в браузере), принудительно ставим цвета */
+    :not(.theme-dark):not(.theme-light) .callout[data-callout="problem"] {
+        background-color: #1e1e1e !important;
+        color: #dcddde !important;
+    }
 }
 
 /* 2. Шапка задачи */
 .callout[data-callout="problem"] > .callout-title {
-    background-color: var(--task-accent) !important; 
+    background-color: #0679a7 !important; 
     padding: 8px 15px !important;
     color: #ffffff !important; 
     font-weight: bold !important;
@@ -47,14 +44,15 @@
 /* 3. Тело задачи */
 .callout[data-callout="problem"] > .callout-content {
     padding: 15px 15px 5px 15px !important;  
-    background-color: var(--task-bg) !important;
-    color: var(--task-text) !important;
+    /* Наследует цвет от родителя, но на всякий случай дублируем логику адаптации */
+    background-color: inherit !important;
+    color: inherit !important;
 }
 
-/* 4. Блок ответа ВНУТРИ задачи (с линией) */
+/* 4. Блок ответа ВНУТРИ задачи */
 .callout[data-callout="problem"] .callout[data-callout="answer"] {
     border: none !important;
-    border-top: 1px solid var(--task-accent) !important; 
+    border-top: 1px solid #0679a7 !important; 
     background-color: transparent !important;
     margin-top: 15px !important; 
     margin-left: -15px !important;
@@ -64,31 +62,39 @@
     margin-bottom: 0px !important;
 }
 
-/* Заголовок "Ответ" ВНУТРИ задачи */
+/* Заголовок "Ответ" */
 .callout[data-callout="problem"] .callout[data-callout="answer"] > .callout-title {
     background-color: transparent !important;
     font-style: normal !important; 
     font-weight: normal !important; 
     font-size: 0.95em !important;
     padding: 0 !important;
-    color: var(--task-muted) !important; 
+    color: #747474 !important; /* Цвет для светлой темы */
     min-height: 0 !important;
 }
 
-/* Текст ответа ВНУТРИ задачи */
+/* Адаптация заголовка "Ответ" в темной теме (Obsidian + Браузер) */
+.theme-dark .callout[data-callout="problem"] .callout[data-callout="answer"] > .callout-title,
+@media (prefers-color-scheme: dark) {
+    :not(.theme-light) .callout[data-callout="problem"] .callout[data-callout="answer"] > .callout-title {
+        color: #a3a3a3 !important;
+    }
+}
+
+/* Текст ответа */
 .callout[data-callout="problem"] .callout[data-callout="answer"] > .callout-content {
     font-style: normal !important; 
     padding: 2px 0 2px 0 !important;
     margin: 0 !important;
-    color: var(--task-text) !important;
+    color: inherit !important;
 }
 
-/* Стрелочка ВНУТРИ задачи */
+/* Стрелочка */
 .callout[data-callout="problem"] .callout[data-callout="answer"] > .callout-title .callout-fold-icon {
-    color: var(--task-accent) !important; 
+    color: #0679a7 !important; 
 }
 
-/* Контейнер для разделения задачи на колонки */
+/* 5. Геометрия колонок (без изменений) */
 .task-layout {
     display: flex !important;
     flex-direction: row !important;
@@ -96,21 +102,12 @@
     align-items: flex-start !important;
 }
 
-/* Левая часть с текстом */
 .task-text {
     flex: 1 !important;
 }
 
-/* Правая часть с картинкой */
 .task-image {
     flex: 0 0 auto !important;
     max-width: 250px !important;
     text-align: right !important;
-}
-
-/* Инверсия изображений в темной теме браузера */
-@media (prefers-color-scheme: dark) {
-    .task-image img {
-        filter: brightness(0.8) contrast(1.2);
-    }
 }
