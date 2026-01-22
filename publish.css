@@ -1,4 +1,4 @@
-/* 1. ОПРЕДЕЛЕНИЕ ЦВЕТОВ (Универсально) */
+/* 1. БАЗОВЫЕ ПЕРЕМЕННЫЕ (Универсальные) */
 :root {
     --p-accent: #0679a7;
     --p-bg: #ffffff;
@@ -6,39 +6,39 @@
     --p-muted: #747474;
 }
 
-/* Если в системе или браузере включена темная тема */
+/* 2. ЛОГИКА ДЛЯ ТЕМНОЙ ТЕМЫ (Браузер + Системная тема) */
 @media (prefers-color-scheme: dark) {
     :root {
-        --p-bg: #1e1e1e;   /* Цвет фона для темной темы */
-        --p-text: #e0e0e0; /* Цвет текста для темной темы */
-        --p-muted: #a0a0a0;
+        --p-bg: #1e1e1e !important;   
+        --p-text: #e0e0e0 !important; 
+        --p-muted: #a0a0a0 !important;
     }
 }
 
-/* Специально для Obsidian (чтобы цвета точно совпадали с темой приложения) */
+/* 3. ЛОГИКА ДЛЯ ОБСИДИАНА (Светлая и Темная темы) */
 .theme-dark {
-    --p-bg: var(--background-primary);
-    --p-text: var(--text-normal);
-    --p-muted: var(--text-muted);
+    --p-bg: var(--background-primary) !important;
+    --p-text: var(--text-normal) !important;
+    --p-muted: var(--text-muted) !important;
 }
 .theme-light {
-    --p-bg: var(--background-primary);
-    --p-text: var(--text-normal);
-    --p-muted: var(--text-muted);
+    --p-bg: var(--background-primary) !important;
+    --p-text: var(--text-normal) !important;
+    --p-muted: var(--text-muted) !important;
 }
 
-/* 2. ОСНОВНОЙ КОНТЕЙНЕР (Геометрия без изменений) */
+/* 4. ОСНОВНОЙ КОНТЕЙНЕР (Геометрия сохранена) */
 .callout[data-callout="problem"] {
-    --callout-color: 6, 121, 167; 
     border: 2px solid var(--p-accent) !important; 
     background-color: var(--p-bg) !important;
+    color: var(--p-text) !important;
     border-radius: 6px !important;
     margin: 15px 0 !important;
     padding: 0 !important;
     overflow: hidden !important;
 }
 
-/* 3. ШАПКА */
+/* 5. ШАПКА */
 .callout[data-callout="problem"] > .callout-title {
     background-color: var(--p-accent) !important; 
     padding: 8px 15px !important;
@@ -50,14 +50,14 @@
     display: none !important;
 }
 
-/* 4. ТЕЛО ЗАДАЧИ */
+/* 6. ТЕЛО ЗАДАЧИ */
 .callout[data-callout="problem"] > .callout-content {
     padding: 15px 15px 5px 15px !important;  
     background-color: var(--p-bg) !important;
     color: var(--p-text) !important;
 }
 
-/* 5. БЛОК ОТВЕТА (Геометрия без изменений) */
+/* 7. БЛОК ОТВЕТА */
 .callout[data-callout="problem"] .callout[data-callout="answer"] {
     border: none !important;
     border-top: 1px solid var(--p-accent) !important; 
@@ -66,32 +66,24 @@
     margin-left: -15px !important;
     margin-right: -15px !important;
     padding: 8px 15px 5px 15px !important; 
-    border-radius: 0 !important;
-    margin-bottom: 0px !important;
 }
 
 .callout[data-callout="problem"] .callout[data-callout="answer"] > .callout-title {
     background-color: transparent !important;
-    font-style: normal !important; 
-    font-weight: normal !important; 
+    color: var(--p-muted) !important; 
     font-size: 0.95em !important;
     padding: 0 !important;
-    color: var(--p-muted) !important; 
-    min-height: 0 !important;
 }
 
 .callout[data-callout="problem"] .callout[data-callout="answer"] > .callout-content {
-    font-style: normal !important; 
-    padding: 2px 0 2px 0 !important;
-    margin: 0 !important;
     color: var(--p-text) !important;
 }
 
-.callout[data-callout="problem"] .callout[data-callout="answer"] > .callout-title .callout-fold-icon {
+.callout[data-callout="problem"] .callout[data-callout="answer"] .callout-fold-icon {
     color: var(--p-accent) !important; 
 }
 
-/* 6. РАЗМЕТКА (Layout) */
+/* 8. РАЗМЕТКА КОЛОНОК */
 .task-layout {
     display: flex !important;
     flex-direction: row !important;
@@ -99,12 +91,16 @@
     align-items: flex-start !important;
 }
 
-.task-text {
-    flex: 1 !important;
-}
+.task-text { flex: 1 !important; }
 
 .task-image {
     flex: 0 0 auto !important;
     max-width: 250px !important;
-    text-align: right !important;
+}
+
+/* Инверсия картинки для темной темы (чтобы не было белого пятна) */
+@media (prefers-color-scheme: dark) {
+    .task-image img {
+        filter: invert(0.9) hue-rotate(180deg); /* Инвертирует белый фон картинки в темный */
+    }
 }
