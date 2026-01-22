@@ -1,0 +1,87 @@
+/* 1. Основной контейнер задачи */
+.callout[data-callout="problem"] {
+    --callout-color: 6, 121, 167; 
+    border: 2px solid #0679a7 !important; 
+    background-color: white !important;
+    border-radius: 6px !important;
+    margin: 15px 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    padding-bottom: 0px !important;
+}
+
+/* 2. Шапка задачи */
+.callout[data-callout="problem"] > .callout-title {
+    background-color: #0679a7 !important; 
+    padding: 8px 15px !important;
+    color: #ffffff !important; 
+    font-weight: bold !important;
+}
+
+.callout[data-callout="problem"] > .callout-title .callout-icon {
+    display: none !important;
+}
+
+/* 3. Тело задачи */
+.callout[data-callout="problem"] > .callout-content {
+    padding: 15px 15px 5px 15px !important;  
+    background-color: #ffffff !important;
+    color: #000 !important;
+}
+
+/* 4. Блок ответа ВНУТРИ задачи (с линией) */
+.callout[data-callout="problem"] .callout[data-callout="answer"] {
+    border: none !important;
+    border-top: 1px solid #0679a7 !important; /* Линия только здесь */
+    background-color: transparent !important;
+    margin-top: 15px !important; 
+    margin-left: -15px !important;
+    margin-right: -15px !important;
+    padding: 8px 15px 5px 15px !important; 
+    border-radius: 0 !important;
+    margin-bottom: 0px !important;
+}
+
+/* Заголовок "Ответ" ВНУТРИ задачи */
+.callout[data-callout="problem"] .callout[data-callout="answer"] > .callout-title {
+    background-color: transparent !important;
+    font-style: normal !important; 
+    font-weight: normal !important; 
+    font-size: 0.95em !important;
+    padding: 0 !important;
+    color: #747474 !important; 
+    min-height: 0 !important;
+}
+
+/* Текст ответа ВНУТРИ задачи */
+.callout[data-callout="problem"] .callout[data-callout="answer"] > .callout-content {
+    font-style: normal !important; 
+    padding: 2px 0 2px 0 !important;
+    margin: 0 !important;
+    color: #000 !important;
+}
+
+/* Стрелочка ВНУТРИ задачи */
+.callout[data-callout="problem"] .callout[data-callout="answer"] > .callout-title .callout-fold-icon {
+    color: #0679a7 !important; 
+}
+
+/* Контейнер для разделения задачи на колонки */
+.task-layout {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 20px !important;       /* Расстояние между текстом и картинкой */
+    align-items: flex-start !important; /* Выравнивание по верхнему краю */
+}
+
+/* Левая часть с текстом */
+.task-text {
+    flex: 1 !important;         /* Занимает всё свободное место */
+}
+
+/* Правая часть с картинкой */
+.task-image {
+    flex: 0 0 auto !important;  /* Не растягивается */
+    max-width: 250px !important; /* Максимальная ширина колонки для фото */
+    text-align: right !important;
+}

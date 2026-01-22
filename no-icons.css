@@ -1,0 +1,34 @@
+/* Полностью прозрачный callout "answer" (ВНЕ задач) */
+:not(.callout[data-callout="problem"]) > .callout-content > .callout[data-callout="answer"],
+:not(.callout[data-callout="problem"]).callout[data-callout="answer"] {
+    background-color: transparent !important;
+    border: none !important;
+    border-top: none !important; /* Прячем линию из стиля задач */
+    box-shadow: none !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* Стилизация заголовка ВНЕ задач (Синий крупный) */
+:not(.callout[data-callout="problem"]) .callout[data-callout="answer"] .callout-title {
+    padding-left: 0 !important;
+    color: #0679a7 !important; 
+    font-size: 1.2em !important; 
+    font-weight: 500;
+}
+
+/* Стрелочка ВНЕ задач */
+:not(.callout[data-callout="problem"]) .callout[data-callout="answer"] .callout-fold {
+    color: #0679a7 !important;
+}
+
+/* Скрытие иконки ВНЕ задач */
+:not(.callout[data-callout="problem"]) .callout[data-callout="answer"] .callout-icon {
+    display: none !important;
+}
+
+/* Контент ВНЕ задач */
+:not(.callout[data-callout="problem"]) .callout[data-callout="answer"] .callout-content {
+    padding-left: 1.5em !important;
+    color: var(--text-normal);
+}

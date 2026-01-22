@@ -1,0 +1,53 @@
+/* 1. ГЛОБАЛЬНЫЕ НАСТРОЙКИ ЗАГОЛОВКОВ */
+/* Уменьшаем отступы СВЕРХУ и СНИЗУ у всех заголовков */
+.markdown-rendered h1, .markdown-rendered h2, .markdown-rendered h3, .markdown-rendered h4, .markdown-rendered h5,
+.markdown-source-view.mod-cm6 .cm-header-1, 
+.markdown-source-view.mod-cm6 .cm-header-2, 
+.markdown-source-view.mod-cm6 .cm-header-3 {
+    margin-top: 8px !important;    /* Расстояние над заголовком */
+    margin-bottom: 0px !important;  /* Расстояние под заголовком */
+    line-height: 1.2 !important;
+}
+
+/* 2. НАСТРОЙКИ СПИСКОВ */
+/* Прижимаем списки вплотную к заголовкам */
+.markdown-rendered ul, 
+.markdown-rendered ol,
+.markdown-source-view.mod-cm6 .cm-content ul,
+.markdown-source-view.mod-cm6 .cm-content ol {
+    margin-top: 0px !important;
+    margin-bottom: 4px !important;
+    padding-top: 0px !important;
+}
+
+/* 3. НАСТРОЙКИ ПАРАГРАФОВ (ОБЫЧНЫЙ ТЕКСТ) */
+.markdown-rendered p,
+.markdown-source-view.mod-cm6 .cm-line {
+    margin-top: 1px !important;
+    margin-bottom: 1px !important;
+}
+
+/* 4. ГОРИЗОНТАЛЬНАЯ ЛИНИЯ (HR) */
+.markdown-rendered hr {
+    border: none !important;
+    border-top: 1px solid #d1d1d1 !important;
+    height: 0px !important;
+    opacity: 1 !important;
+    margin-top: 4px !important;
+    margin-bottom: 4px !important;
+}
+
+/* 5. СКРЫТИЕ ЭЛЕМЕНТОВ (ЗАГОЛОВОК ФАЙЛА) */
+.page-header, .inline-title, h1[class*="title"] {
+    display: none !important;
+}
+
+/* 6. ССЫЛКИ (БЕЗ ПОДЧЕРКИВАНИЯ И ИКОНОК) */
+.markdown-rendered a, .internal-link {
+    text-decoration: none !important;
+}
+
+.external-link {
+    background-image: none !important;
+    padding-right: 0 !important;
+}
