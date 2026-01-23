@@ -117,3 +117,36 @@
         background-color: transparent !important;
     }
 }
+
+
+
+
+/* =========================================================
+   ФИКС АДАПТАЦИИ ТЕМЫ — БЕЗ ИЗМЕНЕНИЯ ГЕОМЕТРИИ
+   ========================================================= */
+
+/* Условие задачи */
+.callout[data-callout="problem"] {
+    background-color: transparent !important;
+}
+
+/* Контент условия */
+.callout[data-callout="problem"] > .callout-content {
+    background-color: transparent !important;
+}
+
+/* Ответ */
+.callout[data-callout="problem"] .callout[data-callout="answer"] {
+    background-color: transparent !important;
+}
+
+/* Контент ответа */
+.callout[data-callout="problem"]
+.callout[data-callout="answer"] > .callout-content {
+    background-color: transparent !important;
+}
+
+/* Тёмная тема Obsidian — цвет текста */
+.theme-dark .callout[data-callout="problem"] {
+    color: var(--text-normal) !important;
+}
