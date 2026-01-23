@@ -1,7 +1,43 @@
-/* 1. ГЕОМЕТРИЯ (БЕЗ ИЗМЕНЕНИЙ) */
+/* 1. ОПРЕДЕЛЕНИЕ ЦВЕТОВ (ЕДИНСТВЕННОЕ ИЗМЕНЕНИЕ ЛОГИКИ) */
+:root {
+    --task-bg: #ffffff;
+    --task-text: #000000;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --task-bg: #1e1e1e; /* Цвет фона страницы в темной теме браузера */
+        --task-text: #e0e0e0;
+    }
+}
+
+/* Синхронизация с темами самого Obsidian */
+.theme-dark {
+    --task-bg: var(--background-primary);
+    --task-text: var(--text-normal);
+}
+.theme-light {
+    --task-bg: #ffffff;
+    --task-text: #000000;
+}
+
+/* 2. ПРИНУДИТЕЛЬНЫЙ ФОН СТРАНИЦЫ (Для браузера) */
+@media (prefers-color-scheme: dark) {
+    body, 
+    .markdown-rendered, 
+    .markdown-preview-view {
+        background-color: var(--task-bg) !important;
+        color: var(--task-text) !important;
+    }
+}
+
+/* 3. ОСНОВНОЙ КОНТЕЙНЕР ЗАДАЧИ (ГЕОМЕТРИЯ НЕ ТРОНУТА) */
 .callout[data-callout="problem"] {
     --callout-color: 6, 121, 167; 
     border: 2px solid #0679a7 !important; 
+    
+    background-color: var(--task-bg) !important; /* Изменено с transparent на переменную */
+    
     border-radius: 6px !important;
     margin: 15px 0 !important;
     padding: 0 !important;
@@ -9,6 +45,7 @@
     padding-bottom: 0px !important;
 }
 
+/* 4. ШАПКА ЗАДАЧИ */
 .callout[data-callout="problem"] > .callout-title {
     background-color: #0679a7 !important; 
     padding: 8px 15px !important;
@@ -16,80 +53,84 @@
     font-weight: bold !important;
 }
 
-.callout[data-callout="problem"] > .callout-content {
-    padding: 15px 15px 5px 15px !important;  
+.callout[data-callout="problem"] > .callout-title .callout-icon {
+    display: none !important;
 }
 
+/* 5. ТЕЛО ЗАДАЧИ */
+.callout[data-callout="problem"] > .callout-content {
+    padding: 15px 15px 5px 15px !important;  
+    background-color: var(--task-bg) !important; /* Изменено */
+    color: var(--task-text) !important;         /* Изменено */
+}
+
+/* 6. БЛОК ОТВЕТА ВНУТРИ */
 .callout[data-callout="problem"] .callout[data-callout="answer"] {
     border: none !important;
     border-top: 1px solid #0679a7 !important; 
+    background-color: var(--task-bg) !important; /* Изменено */
     margin-top: 15px !important; 
     margin-left: -15px !important;
     margin-right: -15px !important;
     padding: 8px 15px 5px 15px !important; 
+    border-radius: 0 !important;
+    margin-bottom: 0px !important;
 }
 
+/* Заголовок "Ответ" */
+.callout[data-callout="problem"] .callout[data-callout="answer"] > .callout-title {
+    background-color: transparent !important;
+    font-style: normal !important; 
+    font-weight: normal !important; 
+    font-size: 0.95em !important;
+    padding: 0 !important;
+    color: gray !important; 
+    min-height: 0 !important;
+}
+
+/* Текст ответа */
+.callout[data-callout="problem"] .callout[data-callout="answer"] > .callout-content {
+    font-style: normal !important; 
+    padding: 2px 0 2px 0 !important;
+    margin: 0 !important;
+    color: var(--task-text) !important; /* Изменено */
+}
+
+/* 7. ГЕОМЕТРИЯ КОЛОНОК (БЕЗ ИЗМЕНЕНИЙ) */
 .task-layout {
     display: flex !important;
     flex-direction: row !important;
     gap: 20px !important;
     align-items: flex-start !important;
 }
-
+.task-text { flex: 1 !important; }
 .task-image {
     flex: 0 0 auto !important;
     max-width: 250px !important;
     text-align: right !important;
 }
 
-/* 2. ЛОГИКА ТЕМНОЙ ТЕМЫ ДЛЯ БРАУЗЕРА */
+/* 8. АДАПТАЦИЯ КАРТИНОК И ФОРМУЛ */
 @media (prefers-color-scheme: dark) {
-    /* Инверсия для браузера (когда нет классов Obsidian) */
-    :not(.theme-light):not(.theme-dark) body {
-        filter: invert(0.92) hue-rotate(180deg) !important;
-        background-color: #050505 !important;
-    }
-
-    /* Исправление цветов для шапок и картинок после инверсии */
-    :not(.theme-light):not(.theme-dark) .callout[data-callout="problem"] > .callout-title,
-    :not(.theme-light):not(.theme-dark) img,
-    :not(.theme-light):not(.theme-dark) .callout-fold-icon {
-        filter: invert(1) hue-rotate(180deg) !important;
+    img, .task-image img {
+        filter: invert(0.9) hue-rotate(180deg) brightness(1.1) !important;
+        background-color: transparent !important;
     }
 }
 
-/* 3. ЛОГИКА АДАПТАЦИИ ЦВЕТОВ (ИСПРАВЛЕНО) */
+/* =========================================================
+   WEB HTML EXPORTER — АДАПТАЦИЯ ПОД ТЁМНУЮ ТЕМУ БРАУЗЕРА
+   ========================================================= */
 
-/* Цвета для OBSIDIAN (Dark) */
-.theme-dark .callout[data-callout="problem"],
-.theme-dark .callout[data-callout="problem"] .callout-content {
-    background-color: var(--background-primary) !important;
-    color: var(--text-normal) !important;
-}
+@media (prefers-color-scheme: dark) {
 
-/* Цвета для ВСЕХ ОСТАЛЬНЫХ СЛУЧАЕВ (Light Obsidian + Браузер) */
-/* Мы ПРИНУДИТЕЛЬНО задаем белый фон, чтобы инверсия в браузере сработала корректно */
-.callout[data-callout="problem"],
-.theme-light .callout[data-callout="problem"],
-.callout[data-callout="problem"] .callout-content {
-    background-color: #ffffff !important;
-    color: #000000 !important;
+    /* Фон страницы экспорта */
+    html:not(.theme-light):not(.theme-dark) body,
+    html:not(.theme-light):not(.theme-dark) .markdown-preview-view,
+    html:not(.theme-light):not(.theme-dark) .markdown-rendered {
+        background-color: #121212 !important;
+        color: #e6e6e6 !important;
+    }
+
 }
 
-/* Фикс для вложенного ответа в светлой теме/браузере */
-.callout[data-callout="problem"] .callout[data-callout="answer"] {
-    background-color: #ffffff !important;
-}
-
-/* Текст заголовка "Ответ" */
-.callout[data-callout="problem"] .callout[data-callout="answer"] > .callout-title {
-    color: #747474 !important;
-}
-
-/* Цвета текста "Ответ" для Obsidian Dark */
-.theme-dark .callout[data-callout="problem"] .callout[data-callout="answer"] > .callout-title {
-    color: var(--text-muted) !important;
-}
-.theme-dark .callout[data-callout="problem"] .callout[data-callout="answer"] {
-    background-color: transparent !important;
-}
