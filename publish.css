@@ -118,35 +118,20 @@
     }
 }
 
-
-
-
 /* =========================================================
-   ФИКС АДАПТАЦИИ ТЕМЫ — БЕЗ ИЗМЕНЕНИЯ ГЕОМЕТРИИ
+   WEB HTML EXPORTER — АДАПТАЦИЯ ПОД ТЁМНУЮ ТЕМУ БРАУЗЕРА
    ========================================================= */
 
-/* Условие задачи */
-.callout[data-callout="problem"] {
-    background-color: transparent !important;
+@media (prefers-color-scheme: dark) {
+
+    /* Фон страницы экспорта */
+    html:not(.theme-light):not(.theme-dark) body,
+    html:not(.theme-light):not(.theme-dark) .markdown-preview-view,
+    html:not(.theme-light):not(.theme-dark) .markdown-rendered {
+        background-color: #121212 !important;
+        color: #e6e6e6 !important;
+    }
+
 }
 
-/* Контент условия */
-.callout[data-callout="problem"] > .callout-content {
-    background-color: transparent !important;
-}
 
-/* Ответ */
-.callout[data-callout="problem"] .callout[data-callout="answer"] {
-    background-color: transparent !important;
-}
-
-/* Контент ответа */
-.callout[data-callout="problem"]
-.callout[data-callout="answer"] > .callout-content {
-    background-color: transparent !important;
-}
-
-/* Тёмная тема Obsidian — цвет текста */
-.theme-dark .callout[data-callout="problem"] {
-    color: var(--text-normal) !important;
-}
