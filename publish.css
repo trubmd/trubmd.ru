@@ -1,21 +1,42 @@
-/* 1. ПРИНУДИТЕЛЬНЫЙ ФОН СТРАНИЦЫ (Чтобы под задачами не было белого) */
+/* 1. ОПРЕДЕЛЕНИЕ ЦВЕТОВ (ЕДИНСТВЕННОЕ ИЗМЕНЕНИЕ ЛОГИКИ) */
+:root {
+    --task-bg: #ffffff;
+    --task-text: #000000;
+}
+
 @media (prefers-color-scheme: dark) {
-    /* Если мы в браузере и включена темная тема */
-    body, 
-    .markdown-rendered, 
-    .markdown-preview-view {
-        background-color: #1e1e1e !important;
-        color: #e0e0e0 !important;
+    :root {
+        --task-bg: #1e1e1e; /* Цвет фона страницы в темной теме браузера */
+        --task-text: #e0e0e0;
     }
 }
 
-/* 2. ОСНОВНОЙ КОНТЕЙНЕР ЗАДАЧИ */
+/* Синхронизация с темами самого Obsidian */
+.theme-dark {
+    --task-bg: var(--background-primary);
+    --task-text: var(--text-normal);
+}
+.theme-light {
+    --task-bg: #ffffff;
+    --task-text: #000000;
+}
+
+/* 2. ПРИНУДИТЕЛЬНЫЙ ФОН СТРАНИЦЫ (Для браузера) */
+@media (prefers-color-scheme: dark) {
+    body, 
+    .markdown-rendered, 
+    .markdown-preview-view {
+        background-color: var(--task-bg) !important;
+        color: var(--task-text) !important;
+    }
+}
+
+/* 3. ОСНОВНОЙ КОНТЕЙНЕР ЗАДАЧИ (ГЕОМЕТРИЯ НЕ ТРОНУТА) */
 .callout[data-callout="problem"] {
     --callout-color: 6, 121, 167; 
     border: 2px solid #0679a7 !important; 
     
-    /* Используем системный фон, который мы определили выше */
-    background-color: transparent !important;
+    background-color: var(--task-bg) !important; /* Изменено с transparent на переменную */
     
     border-radius: 6px !important;
     margin: 15px 0 !important;
@@ -24,7 +45,7 @@
     padding-bottom: 0px !important;
 }
 
-/* 3. ШАПКА ЗАДАЧИ */
+/* 4. ШАПКА ЗАДАЧИ */
 .callout[data-callout="problem"] > .callout-title {
     background-color: #0679a7 !important; 
     padding: 8px 15px !important;
@@ -36,18 +57,18 @@
     display: none !important;
 }
 
-/* 4. ТЕЛО ЗАДАЧИ */
+/* 5. ТЕЛО ЗАДАЧИ */
 .callout[data-callout="problem"] > .callout-content {
     padding: 15px 15px 5px 15px !important;  
-    background-color: transparent !important;
-    color: inherit !important; /* Наследует светлый текст от body в темной теме */
+    background-color: var(--task-bg) !important; /* Изменено */
+    color: var(--task-text) !important;         /* Изменено */
 }
 
-/* 5. БЛОК ОТВЕТА ВНУТРИ */
+/* 6. БЛОК ОТВЕТА ВНУТРИ */
 .callout[data-callout="problem"] .callout[data-callout="answer"] {
     border: none !important;
     border-top: 1px solid #0679a7 !important; 
-    background-color: transparent !important;
+    background-color: var(--task-bg) !important; /* Изменено */
     margin-top: 15px !important; 
     margin-left: -15px !important;
     margin-right: -15px !important;
@@ -72,10 +93,10 @@
     font-style: normal !important; 
     padding: 2px 0 2px 0 !important;
     margin: 0 !important;
-    color: inherit !important;
+    color: var(--task-text) !important; /* Изменено */
 }
 
-/* 6. ГЕОМЕТРИЯ КОЛОНОК (БЕЗ ИЗМЕНЕНИЙ) */
+/* 7. ГЕОМЕТРИЯ КОЛОНОК (БЕЗ ИЗМЕНЕНИЙ) */
 .task-layout {
     display: flex !important;
     flex-direction: row !important;
@@ -89,9 +110,8 @@
     text-align: right !important;
 }
 
-/* 7. АДАПТАЦИЯ КАРТИНОК И ФОРМУЛ */
+/* 8. АДАПТАЦИЯ КАРТИНОК И ФОРМУЛ */
 @media (prefers-color-scheme: dark) {
-    /* Инвертируем картинки, чтобы математика на белом фоне стала темной */
     img, .task-image img {
         filter: invert(0.9) hue-rotate(180deg) brightness(1.1) !important;
         background-color: transparent !important;
