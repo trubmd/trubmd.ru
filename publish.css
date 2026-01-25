@@ -171,6 +171,90 @@
 
 
 /* =========================================================
+    БЛОК ТЕОРИИ (THEORY)
+   ========================================================= */
+
+/* Основной контейнер теории */
+.callout[data-callout="theory"] {
+    --callout-color: 48, 119, 72; /* Соответствует #307748 */
+    border: 2px solid #307748 !important; 
+    
+    background-color: var(--task-bg) !important;
+    
+    border-radius: 6px !important;
+    margin: 15px 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+}
+
+/* Шапка теории */
+.callout[data-callout="theory"] > .callout-title {
+    background-color: #307748 !important; 
+    padding: 8px 15px !important;
+    color: #ffffff !important; 
+    font-weight: bold !important;
+}
+
+/* Убираем иконку, чтобы соответствовать стилю задач */
+.callout[data-callout="theory"] > .callout-title .callout-icon {
+    display: none !important;
+}
+
+/* Тело теории */
+.callout[data-callout="theory"] > .callout-content {
+    padding: 15px !important; 
+    background-color: var(--task-bg) !important;
+    color: var(--task-text) !important;
+}
+
+/* Убираем нижний отступ у последнего параграфа в теории */
+.callout[data-callout="theory"] > .callout-content > p:last-child {
+    margin-bottom: 0 !important;
+}
+
+
+/* =========================================================
+    ДОКАЗАТЕЛЬСТВО ВНУТРИ ТЕОРИИ (PROOF) — КОПИЯ СТИЛЯ ОТВЕТА
+   ========================================================= */
+
+/* Контейнер доказательства */
+.callout[data-callout="theory"] .callout[data-callout="proof"] {
+    border: none !important;
+    border-top: 1px solid #307748 !important; /* Зеленая черта вместо синей */
+    background-color: var(--task-bg) !important;
+    margin-top: 15px !important; 
+    margin-left: -15px !important;
+    margin-right: -15px !important;
+    padding: 8px 15px 0px 15px !important; 
+    border-radius: 0 !important;
+    margin-bottom: 0px !important;
+}
+
+/* Заголовок "Доказательство" */
+.callout[data-callout="theory"] .callout[data-callout="proof"] > .callout-title {
+    background-color: transparent !important;
+    font-style: normal !important; 
+    font-weight: normal !important; 
+    font-size: 0.95em !important;
+    padding: 0 !important;
+    color: gray !important; /* Тот же цвет, что в задачах */
+    min-height: 0 !important;
+}
+
+.callout[data-callout="theory"] .callout[data-callout="proof"] > .callout-title .callout-icon {
+    display: none !important;
+}
+
+/* Текст доказательства */
+.callout[data-callout="theory"] .callout[data-callout="proof"] > .callout-content {
+    font-style: normal !important; /* Убран курсив */
+    padding: 2px 0 2px 0 !important;
+    margin: 0 !important;
+    color: var(--task-text) !important;
+}
+
+
+/* =========================================================
    ИСКЛЮЧЕНИЕ ИНВЕРСИИ ДЛЯ МОЕГО ФОТО
    ========================================================= */
 
