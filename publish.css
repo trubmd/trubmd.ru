@@ -134,6 +134,42 @@
 
 }
 
+
+
+/* =========================================================
+   ДОПОЛНЕНИЕ: МОДИФИКАТОР ДЛЯ РАСПОЛОЖЕНИЯ КАРТИНКИ СНИЗУ
+   Используйте <div class="task-layout vertical">
+   ========================================================= */
+
+/* Если добавлен класс .vertical, меняем направление на колонку */
+.task-layout.vertical {
+    flex-direction: column !important;
+    gap: 15px !important;
+    align-items: center !important; /* Центрируем картинку */
+}
+
+/* Растягиваем текст на всю ширину */
+.task-layout.vertical .task-text {
+    width: 100% !important;
+    flex: none !important;
+}
+
+/* Убираем ограничения ширины для картинки в вертикальном режиме */
+.task-layout.vertical .task-image {
+    width: 100% !important;
+    max-width: 100% !important;
+    text-align: center !important;
+    margin: 0 auto !important;
+}
+
+/* Обеспечиваем корректный масштаб картинки */
+.task-layout.vertical .task-image img {
+    max-width: 100% !important;
+    height: auto !important;
+    margin: 0 auto !important;
+}
+
+
 /* =========================================================
    ИСКЛЮЧЕНИЕ ИНВЕРСИИ ДЛЯ МОЕГО ФОТО
    ========================================================= */
