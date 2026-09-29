@@ -16,9 +16,9 @@ configuration:
     fontOrigin: googleFonts
     cdnCaching: true
     typography:
-      header: Schibsted Grotesk
-      body: Source Sans Pro
-      code: IBM Plex Mono
+      header: Inter
+      body: Inter
+      code: JetBrains Mono
     colors:
       lightMode:
         light: "#faf8f8"
@@ -186,7 +186,7 @@ plugins:
       position: beforeBody
       priority: 10
   - source: "@quartz-community/content-meta"
-    enabled: true
+    enabled: false
     layout:
       position: beforeBody
       priority: 20
