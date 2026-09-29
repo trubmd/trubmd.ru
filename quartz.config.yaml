@@ -21,25 +21,25 @@ configuration:
       code: JetBrains Mono
     colors:
       lightMode:
-        light: "#eff1f5"          # Base (светлый мягкий фон)
-        lightgray: "#e6e9ef"      # Surface0 (фон блоков кода и карточек)
-        gray: "#9ca0b0"           # Overlay0 (границы и иконки)
-        darkgray: "#4c4f69"       # Text (основной текст)
-        dark: "#209fb5"           # Sapphire (заголовки h1-h6)
-        secondary: "#8839ef"      # Mauve (фиолетовый акцент для ссылок)
-        tertiary: "#ea76cb"       # Pink (цвет ссылок при наведении)
-        highlight: "rgba(136, 57, 239, 0.12)"
-        textHighlight: "transparent"
+        light: "#faf8f8"
+        lightgray: "#e5e5e5"
+        gray: "#b8b8b8"
+        darkgray: "#4e4e4e"
+        dark: "#2b2b2b"
+        secondary: "#284b63"
+        tertiary: "#84a59d"
+        highlight: rgba(143, 159, 169, 0.15)
+        textHighlight: "#fff23688"
       darkMode:
-        light: "#1e1e2e"          # Base (глубокий тёмно-фиолетовый фон)
-        lightgray: "#313244"      # Surface0 (фон кода и границ)
-        gray: "#6c7086"           # Overlay0 (второстепенные элементы)
-        darkgray: "#cdd6f4"       # Text (мягкий светлый текст)
-        dark: "#89dceb"           # Sky (яркие акцентные заголовки)
-        secondary: "#cba6f7"      # Mauve (фирменный лавандово-фиолетовый AnuPpuccin)
-        tertiary: "#f5c2e7"       # Pink (розовый hover-эффект)
-        highlight: "rgba(203, 166, 247, 0.15)"
-        textHighlight: "transparent"
+        light: "#161618"
+        lightgray: "#393639"
+        gray: "#646464"
+        darkgray: "#d4d4d4"
+        dark: "#ebebec"
+        secondary: "#7b97aa"
+        tertiary: "#84a59d"
+        highlight: rgba(143, 159, 169, 0.15)
+        textHighlight: "#b3aa0288"
 plugins:
   - source: "@quartz-community/created-modified-date"
     enabled: true
@@ -114,7 +114,7 @@ plugins:
     enabled: true
     options:
       theme: default
-      mode: both
+      mode: dark
   - source: "@quartz-community/remove-draft"
     enabled: true
   - source: "@quartz-community/explicit-publish"
