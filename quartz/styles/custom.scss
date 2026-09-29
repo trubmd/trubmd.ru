@@ -4,3 +4,12 @@
 hr {
   display: none !important;
 }
+
+/* Убираем желтый фон со ссылок и выделенного текста */
+a, 
+a.internal, 
+mark {
+  background: transparent !important;
+  background-color: transparent !important;
+  padding: 0 !important;
+}
