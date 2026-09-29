@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
 configuration:
-  pageTitle: Quartz 5
+  pageTitle: trubmd.ru
   pageTitleSuffix: ""
   enableSPA: true
   enablePopovers: true
@@ -227,7 +227,7 @@ plugins:
       position: afterBody
       priority: 10
   - source: "@quartz-community/footer"
-    enabled: true
+    enabled: false
     options:
       links:
         GitHub: https://github.com/jackyzha0/quartz
@@ -285,7 +285,10 @@ layout:
         beforeBody: []
         left: []
         right: []
-    content: {}
+    content:
+      positions:
+        left: []
+        right: []
     folder:
       exclude:
         - reader-mode
