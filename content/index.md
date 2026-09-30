@@ -2,12 +2,12 @@
 title: Главная
 ---
 <div style="width: 100%; height: 1px; background-color: rgba(255, 255, 255, 0.15); margin-top:  0rem; margin-bottom: 0.5rem;"></div>
-<div style="text-align: center; font-size: 1.1rem;">
+<div style="text-align: center;">
   <span>
-    <a href="index" class="internal-link">Главная</a>⠀
-    <a href="math" class="internal-link">Математика</a>⠀
-    <a href="physics" class="internal-link">Физика</a>⠀
-    <a href="personal" class="internal-link">Личная</a>⠀
+    <a href="index" class="internal-link" style="font-size: 1.05rem !important;">Главная</a>⠀
+    <a href="math" class="internal-link" style="font-size: 1.05rem !important;">Математика</a>⠀
+    <a href="physics" class="internal-link" style="font-size: 1.05rem !important;">Физика</a>⠀
+    <a href="personal" class="internal-link" style="font-size: 1.05rem !important;">Личная</a>
   </span>
 </div>
 
