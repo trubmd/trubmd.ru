@@ -82,3 +82,17 @@ article i {
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--bodyFont) !important;
 }
+
+/* Скрыть иконку внешней ссылки (стрелочку) на всем сайте */
+a.external,
+a[target="_blank"],
+a[href^="mailto:"] {
+  &::after {
+    display: none !important;
+    content: "" !important;
+  }
+  
+  svg {
+    display: none !important;
+  }
+}
