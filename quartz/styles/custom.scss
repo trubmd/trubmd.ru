@@ -1,3 +1,4 @@
+
 @use "./variables.scss" as *;
 
 // put your custom CSS here!
@@ -46,7 +47,8 @@ body,
 p, 
 article, 
 h1, h2, h3, h4, h5, h6,
-li {
+li,
+em, i {
   color: #ffffff !important;
 }
 
@@ -54,13 +56,13 @@ li {
 
 /* 2. Все ссылки внутри статьи наследуют точный размер родительского текста */
 article a {
-  font-size: 1rem !important;
+  font-size: 1.1rem !important;
 }
 
 /* Размер 1.1rem для полужирного текста в статье */
 article strong,
 article b {
-  font-size: 1rem !important;
+  font-size: 1.1rem !important;
 }
 
 /* Размер 1.1rem для ссылок в хлебных крошках */
@@ -74,4 +76,9 @@ article b {
 article em,
 article i {
   font-size: 1rem !important;
+}
+
+/* Заголовки будут использовать тот же шрифт, что и обычный текст */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--bodyFont) !important;
 }
