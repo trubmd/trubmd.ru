@@ -15,5 +15,63 @@ mark {
 }
 
 p, article {
-  font-size: 0.9rem; 
+  font-size: 1rem; 
+}
+
+/* Идеальное центрирование и безопасная ширина текста */
+.center {
+  box-sizing: border-box !important;
+  max-width: 720px !important;       /* Оптимальная ширина для чтения */
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 1.5rem !important;   /* Безопасный отступ слева */
+  padding-right: 1.5rem !important;  /* Безопасный отступ справа */
+}
+
+article {
+  box-sizing: border-box !important;
+  width: 100% !important;
+}
+
+/* Чисто белый цвет для текста и заголовков */
+:root,
+[saved-theme="dark"],
+[saved-theme="light"] {
+  --darkgray: #EEEEEE !important; /* Основной текст */
+  --dark: #EEEEEE !important;     /* Заголовки */
+}
+
+body, 
+p, 
+article, 
+h1, h2, h3, h4, h5, h6,
+li {
+  color: #ffffff !important;
+}
+
+
+
+/* 2. Все ссылки внутри статьи наследуют точный размер родительского текста */
+article a {
+  font-size: 1.1rem !important;
+}
+
+/* Размер 1.1rem для полужирного текста в статье */
+article strong,
+article b {
+  font-size: 1.1rem !important;
+}
+
+/* Размер 1.1rem для ссылок в хлебных крошках */
+.breadcrumb-container a,
+.breadcrumbs a,
+.breadcrumb-element a {
+  font-size: 1.1rem !important;
+}
+
+/* Размер 1.1rem только для курсива в статье */
+article em,
+article i {
+  font-size: 1.2rem !important;
 }

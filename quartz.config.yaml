@@ -1,3 +1,4 @@
+
 # yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
 configuration:
   pageTitle: trubmd.ru
@@ -114,7 +115,7 @@ plugins:
     enabled: true
     options:
       theme: default
-      mode: dark
+      mode: 
   - source: "@quartz-community/remove-draft"
     enabled: true
   - source: "@quartz-community/explicit-publish"
