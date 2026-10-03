@@ -1,7 +1,13 @@
-
 @use "./variables.scss" as *;
 
-// put your custom CSS here!
+/* 1. Глобальное скрытие автоматического списка файлов */
+.page-listing,
+.section-ul,
+.section-item {
+  display: none !important;
+}
+
+/* 2. Скрытие горизонтальных линий */
 hr {
   display: none !important;
 }
@@ -19,15 +25,15 @@ p, article {
   font-size: 1rem; 
 }
 
-/* Идеальное центрирование и безопасная ширина текста */
+/* Центрирование и безопасная ширина текста */
 .center {
   box-sizing: border-box !important;
-  max-width: 720px !important;       /* Оптимальная ширина для чтения */
+  max-width: 720px !important;
   width: 100% !important;
   margin-left: auto !important;
   margin-right: auto !important;
-  padding-left: 1.5rem !important;   /* Безопасный отступ слева */
-  padding-right: 1.5rem !important;  /* Безопасный отступ справа */
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
 }
 
 article {
@@ -35,12 +41,12 @@ article {
   width: 100% !important;
 }
 
-/* Чисто белый цвет для текста и заголовков */
+/* Белый цвет для текста и заголовков */
 :root,
 [saved-theme="dark"],
 [saved-theme="light"] {
-  --darkgray: #EEEEEE !important; /* Основной текст */
-  --dark: #EEEEEE !important;     /* Заголовки */
+  --darkgray: #EEEEEE !important;
+  --dark: #EEEEEE !important;
 }
 
 body, 
@@ -52,38 +58,36 @@ em, i {
   color: #ffffff !important;
 }
 
-
-
-/* 2. Все ссылки внутри статьи наследуют точный размер родительского текста */
+/* Ссылки внутри статьи */
 article a {
   font-size: 1.1rem !important;
 }
 
-/* Размер 1.1rem для полужирного текста в статье */
+/* Полужирный текст */
 article strong,
 article b {
   font-size: 1.1rem !important;
 }
 
-/* Размер 1.1rem для ссылок в хлебных крошках */
+/* Ссылки в хлебных крошках */
 .breadcrumb-container a,
 .breadcrumbs a,
 .breadcrumb-element a {
   font-size: 1.1rem !important;
 }
 
-/* Размер 1.1rem только для курсива в статье */
+/* Курсив */
 article em,
 article i {
   font-size: 1rem !important;
 }
 
-/* Заголовки будут использовать тот же шрифт, что и обычный текст */
+/* Шрифт заголовков совпадает с обычным текстом */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--bodyFont) !important;
 }
 
-/* Скрыть иконку внешней ссылки (стрелочку) на всем сайте */
+/* Скрыть иконку внешней ссылки */
 a.external,
 a[target="_blank"],
 a[href^="mailto:"] {
@@ -91,7 +95,7 @@ a[href^="mailto:"] {
     display: none !important;
     content: "" !important;
   }
-  
+
   svg {
     display: none !important;
   }

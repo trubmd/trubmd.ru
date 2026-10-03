@@ -42,7 +42,7 @@ configuration:
         textHighlight: "#b3aa0288"
 plugins:
   - source: "@quartz-community/created-modified-date"
-    enabled: true
+    enabled: false
     options:
       defaultDateType: modified
       priority:
@@ -87,6 +87,7 @@ plugins:
     enabled: true
     options:
       markdownLinkResolution: shortest
+      prettyLinks: false # Добавьте эту строку
     order: 60
   - source: "@quartz-community/description"
     enabled: true
@@ -114,7 +115,7 @@ plugins:
     enabled: true
     options:
       theme: "tokyo-night"
-      mode: "both"
+      mode: "dark"
   - source: "@quartz-community/remove-draft"
     enabled: true
   - source: "@quartz-community/explicit-publish"
@@ -154,11 +155,13 @@ plugins:
   - source: "@quartz-community/content-page"
     enabled: true
   - source: "@quartz-community/folder-page"
-    enabled: true
+    enabled: true # Было: false
+    options:
+      showFolderCount: false
   - source: "@quartz-community/tag-page"
     enabled: true
   - source: "@quartz-community/explorer"
-    enabled: true
+    enabled: false
     layout:
       position: left
       priority: 50
@@ -168,7 +171,7 @@ plugins:
       position: right
       priority: 10
   - source: "@quartz-community/search"
-    enabled: true
+    enabled: false
     layout:
       position: left
       priority: 20
@@ -196,18 +199,18 @@ plugins:
       position: beforeBody
       priority: 30
   - source: "@quartz-community/page-title"
-    enabled: true
+    enabled: false
     layout:
       position: left
       priority: 10
   - source: "@quartz-community/darkmode"
-    enabled: true
+    enabled: false
     layout:
       position: left
       priority: 30
       group: toolbar
   - source: "@quartz-community/reader-mode"
-    enabled: true
+    enabled: false
     layout:
       position: left
       priority: 35
@@ -303,3 +306,6 @@ layout:
         right: []
     canvas: {}
     bases: {}
+    
+    
+
