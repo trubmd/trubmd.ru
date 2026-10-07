@@ -132,4 +132,86 @@ blockquote p {
   font-size: 0.95em !important; /* Применится и к инлайн, и к блочным */
 }
 
+/* ===================================================
+   ФИНАЛЬНАЯ АДАПТАЦИЯ KaTeX (Стандартный подход)
+   =================================================== */
 
+/* 1. Общие настройки блочных формул (на ПК и мобильных) */
+.katex-display {
+  position: relative !important;
+  margin: 1.5em 0 !important;
+  /* Разрешаем горизонтальный скролл */
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  /* Плавный скролл на iOS */
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 0.5rem !important; /* Место для полосы прокрутки, если она появится */
+  box-sizing: border-box !important;
+}
+
+/* 2. Настройка самой формулы внутри контейнера */
+.katex-display > .katex {
+  /* Формула может быть шире экрана, это нормально */
+  display: inline-block !important;
+  vertical-align: middle !important;
+}
+
+/* 3. Скрываем серые полосы скроллбара (по желанию, для красоты) */
+.katex-display::-webkit-scrollbar {
+  height: 4px; /* Тонкая полоска */
+}
+.katex-display::-webkit-scrollbar-thumb {
+  background-color: rgba(150, 150, 150, 0.3); /* Полупрозрачная */
+  border-radius: 4px;
+}
+
+/* 4. Настройки для ПК (широкие экраны) */
+@media (min-width: 601px) {
+  .katex {
+    font-size: 0.95em !important;
+  }
+  
+  /* Резервируем место под номер справа */
+  .katex-display {
+    padding-right: 4.5rem !important;
+  }
+
+  /* Номер формулы абсолютно справа по центру */
+  .katex-display .tag {
+    position: absolute !important;
+    right: 0 !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    font-size: 0.9em !important;
+  }
+}
+
+/* 5. Настройки специально для мобильных (до 600px) */
+@media (max-width: 600px) {
+  /* Немного уменьшаем шрифт, чтобы больше влезло без скролла */
+  .katex {
+    font-size: 0.85em !important;
+  }
+
+  /* Формула занимает всю ширину */
+  .katex-display {
+    padding-right: 0 !important;
+    text-align: center !important; /* Центрируем саму формулу */
+  }
+
+  /* !!! ГЛАВНОЕ: Убираем налезние номера !!! */
+  .katex-display .tag {
+    /* Переводим номер из абсолютного в обычный блок */
+    position: relative !important;
+    display: block !important;
+    /* Убираем все смещения */
+    right: auto !important;
+    top: auto !important;
+    transform: none !important;
+    /* Выравниваем номер по правому краю ПОД формулой */
+    text-align: right !important;
+    margin-top: 0.5rem !important;
+    font-size: 0.8em !important;
+    color: var(--gray); /* Немного приглушаем цвет номера */
+  }
+}
