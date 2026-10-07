@@ -58,14 +58,17 @@ em, i {
   color: #ffffff !important;
 }
 
-/* Ссылки внутри статьи */
-article a {
+/* 1) Жирный текст наследует цвет обычного текста (#ffffff) */
+strong,
+b,
+article strong,
+article b {
+  color: inherit !important;
   font-size: 1.1rem !important;
 }
 
-/* Полужирный текст */
-article strong,
-article b {
+/* Ссылки внутри статьи */
+article a {
   font-size: 1.1rem !important;
 }
 
@@ -99,4 +102,27 @@ a[href^="mailto:"] {
   svg {
     display: none !important;
   }
+}
+
+
+
+/* Исправление кириллического курсива без срыва на засечный шрифт */
+em, 
+i, 
+article em, 
+article i {
+  font-family: var(--bodyFont), system-ui, -apple-system, "Segoe UI", Roboto, sans-serif !important;
+  font-style: italic !important;
+  font-synthesis: style !important;
+}
+
+/* Отступ текста от левой черты в цитатах (>) и callouts */
+blockquote,
+.callout {
+  padding-left: 1.25rem !important; /* Оптимальный отступ от левой полосы */
+}
+
+/* Если внутри цитаты несколько абзацев */
+blockquote p {
+  margin-left: 0 !important;
 }
