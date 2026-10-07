@@ -126,3 +126,8 @@ blockquote,
 blockquote p {
   margin-left: 0 !important;
 }
+
+/* Единый размер для всех формул KaTeX */
+.katex {
+  font-size: 0.95em !important; /* Применится и к инлайн, и к блочным */
+}
