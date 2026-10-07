@@ -133,25 +133,27 @@ blockquote p {
 }
 
 /* ===================================================
-   Адаптация KaTeX-формул (Исправленная версия)
+   Настройка и адаптация KaTeX-формул для ПК и мобильных
    =================================================== */
 
-/* 1. Базовый контейнер блочной формулы */
+/* Общий размер формул на ПК */
+.katex {
+  font-size: 0.92em !important;
+}
+
+/* Базовый контейнер блочной формулы */
 .katex-display {
   position: relative !important;
   margin: 1em 0 !important;
 }
 
-/* 2. Сама формула: ограничиваем ширину, резервируя место под номер справа */
+/* Формула на ПК: оставляем место под номер \tag справа */
 .katex-display > .katex {
   max-width: calc(100% - 4.5rem) !important;
-  overflow-x: auto !important;
-  overflow-y: hidden !important;
-  padding-bottom: 0.2rem !important;
   vertical-align: middle !important;
 }
 
-/* 3. Фиксируем номер формулы справа */
+/* Номер формулы на ПК */
 .katex-display .tag {
   position: absolute !important;
   right: 0 !important;
@@ -159,25 +161,40 @@ blockquote p {
   transform: translateY(-50%) !important;
 }
 
-/* 4. Оптимизация специально для мобильных устройств (до 600px) */
+/* Адаптация под мобильные устройства (до 600px) */
 @media (max-width: 600px) {
+  /* 1. Чуть меньший размер шрифта */
   .katex {
-    font-size: 0.82em !important;
+    font-size: 0.8em !important;
   }
 
-  /* На смартфонах даем формуле 100% ширины, а номер (\tag) 
-     аккуратно переносим на отдельную строчку снизу справа */
+  /* 2. Включаем перенос длинных выражений и убираем скроллбар */
   .katex-display > .katex {
     max-width: 100% !important;
-    display: block !important;
+    white-space: normal !important;
+  }
+  
+  .katex .base {
+    white-space: normal !important;
+    display: inline !important;
   }
 
+  .katex-display::-webkit-scrollbar {
+    display: none !important;
+  }
+  
+  .katex-display {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+  }
+
+  /* 3. Переносим номер формулы под саму формулу справа */
   .katex-display .tag {
     position: relative !important;
     display: block !important;
     text-align: right !important;
     top: auto !important;
     transform: none !important;
-    margin-top: 0.3rem !important;
+    margin-top: 0.2rem !important;
   }
 }
