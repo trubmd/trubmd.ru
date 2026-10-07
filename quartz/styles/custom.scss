@@ -132,4 +132,52 @@ blockquote p {
   font-size: 0.95em !important; /* Применится и к инлайн, и к блочным */
 }
 
+/* ===================================================
+   Адаптация KaTeX-формул (Исправленная версия)
+   =================================================== */
 
+/* 1. Базовый контейнер блочной формулы */
+.katex-display {
+  position: relative !important;
+  margin: 1em 0 !important;
+}
+
+/* 2. Сама формула: ограничиваем ширину, резервируя место под номер справа */
+.katex-display > .katex {
+  max-width: calc(100% - 4.5rem) !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  padding-bottom: 0.2rem !important;
+  vertical-align: middle !important;
+}
+
+/* 3. Фиксируем номер формулы справа */
+.katex-display .tag {
+  position: absolute !important;
+  right: 0 !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+}
+
+/* 4. Оптимизация специально для мобильных устройств (до 600px) */
+@media (max-width: 600px) {
+  .katex {
+    font-size: 0.82em !important;
+  }
+
+  /* На смартфонах даем формуле 100% ширины, а номер (\tag) 
+     аккуратно переносим на отдельную строчку снизу справа */
+  .katex-display > .katex {
+    max-width: 100% !important;
+    display: block !important;
+  }
+
+  .katex-display .tag {
+    position: relative !important;
+    display: block !important;
+    text-align: right !important;
+    top: auto !important;
+    transform: none !important;
+    margin-top: 0.3rem !important;
+  }
+}
