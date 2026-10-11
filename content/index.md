@@ -7,7 +7,7 @@ title: Главная
     <a href="index" class="internal-link" style="font-size: 1.05rem !important;">Главная</a>⠀
     <a href="/math/index" class="internal-link" style="font-size: 1.05rem !important;">Математика</a>⠀
     <a href="/physics/index" class="internal-link" style="font-size: 1.05rem !important;">Физика</a>⠀
-    <a href="personal" class="internal-link" style="font-size: 1.05rem !important;">Личная</a>
+    <a href="personal" class="internal-link" style="font-size: 1.05rem !important;">Личная</a>⠀
   </span>
 </div>
 
@@ -15,6 +15,5 @@ title: Главная
 
 **Добро пожаловать на мой сайт!**
 
-Здесь в соответствующих разделах я буду публиковать обучающие материалы и задачи по [[math/index|математике]] и [[physics/index|физике]].
+Здесь я буду публиковать материалы для изучения [[math/index|математики]] и [[physics/index|физики]]. На [[personal|личной страничке]] вы найдёте краткую информацию обо мне и заметки на интересующие меня темы.
 
-На [[personal|личной страничке]] вы найдёте краткую информацию обо мне и моих интересах.

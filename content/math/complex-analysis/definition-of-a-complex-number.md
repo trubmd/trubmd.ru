@@ -22,12 +22,6 @@ $$
 называется _алгебраической формой_ комплексного числа.
 
 **Примеры комплексных чисел:** $3$, $2i$, $-2+2i$.
-
-Число $\overline{z}=x-iy$ называется **комплексно-сопряженным** к числу $z=x+iy$.
-
-**Пример комплексно-сопряженных чисел:** $z=1+3i$,  $\overline{z}=1-3i$.
-
-<br>
 <div style="width: 100%; height: 1px; background-color: rgba(255, 255, 255, 0.15); margin-top:  0.5rem; margin-bottom: 0rem;"></div> 
 
 [[math/complex-analysis/operations-on-complex-numbers|Операции над комплексными числами →]]

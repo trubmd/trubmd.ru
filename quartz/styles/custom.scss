@@ -132,4 +132,68 @@ blockquote p {
   font-size: 0.95em !important; /* Применится и к инлайн, и к блочным */
 }
 
+/* ===================================================
+   Центрирование всех изображений на страницах Quartz
+   =================================================== */
 
+/* 1. Основные картинки в статьях */
+article img,
+.popover-hint img {
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  max-width: 100% !important; /* Чтобы картинки не вылезали за ширину экрана */
+  height: auto !important;
+}
+
+/* 2. Если изображения завернуты в тег <figure> (с подписями) */
+article figure {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  margin: 1.5rem auto !important;
+  text-align: center !important;
+}
+
+/* ===================================================
+   Черта сносок цвета основного текста
+   =================================================== */
+
+/* 1. Скрываем слово "Footnotes" */
+section.footnotes h2,
+.footnotes h2,
+#footnote-label {
+  display: none !important;
+}
+
+/* 2. Линия во всю ширину цвета текста */
+section.footnotes,
+.footnotes {
+  border-top: 0.01em solid currentColor !important; /* Уменьшенная толщина */
+  margin-top: 2.5rem !important;
+  padding-top: 0rem !important;
+}
+
+/* Настройка отступов для всех нумерованных списков */
+ol {
+  padding-left: 1.5rem; /* Уменьшает отступ слева (где располагаются цифры) */
+  margin-top: -1rem;   /* Уменьшает отступ сверху */
+  margin-bottom: 0.5rem; /* Уменьшает отступ снизу */
+}
+
+/* Дополнительно: уменьшение вертикального расстояния между пунктами списка */
+ol li {
+  margin-top: 0.2rem; 
+}
+
+/* Настройка отступов для ненумерованных списков */
+ul {
+  padding-left: 1.2rem; /* Уменьшает отступ слева для маркеров */
+  margin-top: -1rem;   /* Уменьшает отступ сверху */
+  margin-bottom: 0.5rem; /* Уменьшает отступ снизу */
+}
+
+/* Уменьшение вертикального расстояния между пунктами списка */
+ul li {
+  margin-top: 0.7rem; 
+}
