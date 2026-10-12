@@ -33,14 +33,14 @@ $$
 > $\boxed{X \overline{Z} \overline{W} =\varnothing}, \boxed{Y \overline{Z} \overline{W} =\varnothing}, \boxed{\overline{X} \overline{Y}Z =\varnothing}, \boxed{\overline{X} \overline{Y}W=\varnothing}.$
 > 
 > Отметим все полученные условия на диаграмме Венна:
-> ![[dm-1-16-1-1.png|200]]
+> ![[dm-1-16-1-1.png|170]]
 > 
 > Рассмотрим вторую систему.
 > 1. $X=Z \implies X \otimes Z=\varnothing \implies X\overline{Z} \cup \overline{X}Z=\varnothing \implies \boxed{X\overline{Z}=\varnothing}, \boxed{\overline{X}Z=\varnothing}.$
 > 2) $Y=W \implies Y \otimes W=\varnothing \implies Y\overline{W} \cup \overline{Y}W=\varnothing \implies \boxed{Y\overline{W}=\varnothing}, \boxed{\overline{Y}W=\varnothing}.$
 > 
 > Отметим все полученные условия на диаграмме Венна:
-> ![[dm-1-16-1-2.png|200]]
+> ![[dm-1-16-1-2.png|170]]
 > 
 > Видим, что таблицы этих систем не равны, следовательно, системы условий не равносильны.
 
@@ -70,7 +70,7 @@ $$
 > $\implies A\overline{D}\overline{C} \cup A\overline{D}B = \varnothing \implies \boxed{A\overline{D}\overline{C}=\varnothing}, \boxed{A\overline{D}B = \varnothing}.$
 > 
 >  Отметим все полученные условия на диаграмме Венна:
-> ![[images/dm-1-16-2-1.png|200]]
+> ![[images/dm-1-16-2-1.png|170]]
 > 
 > Рассмотрим вторую систему.
 > 
@@ -79,7 +79,7 @@ $$
 > 3.  $A \subseteq C \cup D \implies A(\overline{C \cup D})=\varnothing \implies \boxed{A\overline{C}\overline{D}=\varnothing}.$
 >    
 >    Отметим все полученные условия на диаграмме Венна:
-> ![[images/dm-1-16-2-2.png|200]]
+> ![[images/dm-1-16-2-2.png|170]]
 > 
 > Видим, что таблицы этих систем не равны, следовательно, системы условий не равносильны.
 
@@ -108,7 +108,7 @@ $$
 > 3) $AC \subseteq B-D \implies AC(\overline{B-D})=\varnothing \implies AC(\overline{B\overline{D}})=\varnothing \implies AC(\overline{B} \cup D)=\varnothing \implies \\ AC\overline{B} \cup ACD=\varnothing \implies  \boxed{AC\overline{B}=\varnothing},\boxed{ACD=\varnothing}.$
 > 
 > Отметим все полученные условия на диаграмме Венна:
-> ![[dm-1-16-3.png|200]]
+> ![[dm-1-16-3.png|170]]
 > 
 > Рассмотрим вторую систему.
 > 1. $B \subseteq \overline{CD} \implies \boxed{BCD=\varnothing}.$
@@ -117,6 +117,6 @@ $$
 > 4. $A-B \subseteq BC\implies (A-B)\overline{BC}=\varnothing\implies(A\overline{B})(\overline{B}\cup\overline{C})=\varnothing\implies A\overline{B}\overline{B} \cup A \overline{B}\overline{C}=\varnothing \implies \\ \boxed{A\overline{B}=\varnothing},\boxed{A \overline{B}\overline{C}=\varnothing}.$
 > 
 > Отметим все полученные условия на диаграмме Венна:
-> ![[dm-1-16-3.png|200]]
+> ![[dm-1-16-3.png|170]]
 > 
 > Видим, что таблицы этих систем равны, следовательно, системы условий равносильны.
