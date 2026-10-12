@@ -36,8 +36,8 @@ $$
 > ![[dm-1-16-1-1.png|200]]
 > 
 > Рассмотрим вторую систему.
-> 4) $X=Z \implies X \otimes Z=\varnothing \implies X\overline{Z} \cup \overline{X}Z=\varnothing \implies \boxed{X\overline{Z}=\varnothing}, \boxed{\overline{X}Z=\varnothing}.$
-> 5) $Y=W \implies Y \otimes W=\varnothing \implies Y\overline{W} \cup \overline{Y}W=\varnothing \implies \boxed{Y\overline{W}=\varnothing}, \boxed{\overline{Y}W=\varnothing}.$
+> 1. $X=Z \implies X \otimes Z=\varnothing \implies X\overline{Z} \cup \overline{X}Z=\varnothing \implies \boxed{X\overline{Z}=\varnothing}, \boxed{\overline{X}Z=\varnothing}.$
+> 2) $Y=W \implies Y \otimes W=\varnothing \implies Y\overline{W} \cup \overline{Y}W=\varnothing \implies \boxed{Y\overline{W}=\varnothing}, \boxed{\overline{Y}W=\varnothing}.$
 > 
 > Отметим все полученные условия на диаграмме Венна:
 > ![[dm-1-16-1-2.png|200]]
@@ -74,9 +74,9 @@ $$
 > 
 > Рассмотрим вторую систему.
 > 
-> 4. $\overline{A} \subseteq CD \implies \overline{A}(\overline{CD})=\varnothing \implies \overline{A}(\overline{C} \cup \overline{D})=\varnothing \implies \overline{A}\overline{C} \cup \overline{A} \overline{D}=\varnothing \implies \\  \boxed{\overline{A}\overline{C}=\varnothing}, \boxed{\overline{A} \overline{D}=\varnothing}.$
-> 5. $B - C \subseteq \overline{A}\implies(B-C)A=\varnothing\implies \boxed{B\overline{C}A=\varnothing}.$
-> 6.  $A \subseteq C \cup D \implies A(\overline{C \cup D})=\varnothing \implies \boxed{A\overline{C}\overline{D}=\varnothing}.$
+> 1. $\overline{A} \subseteq CD \implies \overline{A}(\overline{CD})=\varnothing \implies \overline{A}(\overline{C} \cup \overline{D})=\varnothing \implies \overline{A}\overline{C} \cup \overline{A} \overline{D}=\varnothing \implies \\  \boxed{\overline{A}\overline{C}=\varnothing}, \boxed{\overline{A} \overline{D}=\varnothing}.$
+> 2. $B - C \subseteq \overline{A}\implies(B-C)A=\varnothing\implies \boxed{B\overline{C}A=\varnothing}.$
+> 3.  $A \subseteq C \cup D \implies A(\overline{C \cup D})=\varnothing \implies \boxed{A\overline{C}\overline{D}=\varnothing}.$
 >    
 >    Отметим все полученные условия на диаграмме Венна:
 > ![[images/dm-1-16-2-2.png|200]]
