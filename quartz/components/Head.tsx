@@ -92,6 +92,8 @@ export default (() => {
         <link rel="icon" href={iconPath} />
         <meta name="description" content={description} />
         <meta name="generator" content="Quartz" />
+        {/* Подтверждение для Яндекс Вебмастера */}
+        <meta name="yandex-verification" content="4ecdbf054bf4cb56" />
 
         {css.map((resource) => CSSResourceToStyleElement(resource, true))}
         {js
