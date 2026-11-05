@@ -33,7 +33,7 @@
 .home {
 	max-width: 40rem;
 	margin: 0 auto;
-	padding-top: 2rem;
+	padding-top: 0.25rem;
 }
 .lead {
 	margin: 0 0 1.75rem;
@@ -152,4 +152,9 @@
 .sl-heading-wrapper > a,
 .sl-markdown-content [class*='anchor'] {
 	display: none !important;
+}
+
+/* Главная: меньше воздуха под верхней панелью */
+:root:not([data-has-sidebar]) .content-panel + .content-panel {
+	padding-top: 0.75rem !important;
 }
