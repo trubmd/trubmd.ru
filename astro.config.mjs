@@ -14,6 +14,12 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'trubmd.ru',
+			favicon: '/favicon.png',
+			customCss: ['./src/styles/custom.css'],
+			components: {
+				Header: './src/components/Header.astro',
+				Footer: './src/components/Footer.astro',
+			},
 			locales: {
 				root: { label: 'Русский', lang: 'ru' },
 			},
@@ -24,11 +30,43 @@ export default defineConfig({
 				},
 			],
 			sidebar: [
-				{ label: 'Алгебра', items: [{ autogenerate: { directory: 'algebra' } }] },
-				{ label: 'Геометрия', items: [{ autogenerate: { directory: 'geometry' } }] },
-				{ label: 'Статистика', items: [{ autogenerate: { directory: 'statistics' } }] },
-				{ label: 'Высшая математика', items: [{ autogenerate: { directory: 'higher-math' } }] },
-				{ label: 'Физика', items: [{ autogenerate: { directory: 'physics' } }] },
+				{ label: '🏠 На главную', link: '/' },
+				{
+					label: 'Элементарная математика',
+					items: [
+						{ label: 'Обзор', slug: 'elementary-math' },
+						{ label: 'Алгебра', collapsed: true, items: [{ autogenerate: { directory: 'elementary-math/algebra' } }] },
+						{ label: 'Геометрия', collapsed: true, items: [{ autogenerate: { directory: 'elementary-math/geometry' } }] },
+						{ label: 'Вероятность и статистика', collapsed: true, items: [{ autogenerate: { directory: 'elementary-math/probability-statistics' } }] },
+						{ label: 'Начала математического анализа', collapsed: true, items: [{ autogenerate: { directory: 'elementary-math/calculus-basics' } }] },
+						{ label: 'Подготовка к ЕГЭ', collapsed: true, items: [{ autogenerate: { directory: 'elementary-math/ege' } }] },
+					],
+				},
+				{
+					label: 'Высшая математика',
+					items: [
+						{ label: 'Обзор', slug: 'higher-math' },
+						{ label: 'Линейная алгебра', collapsed: true, items: [{ autogenerate: { directory: 'higher-math/linear-algebra' } }] },
+						{ label: 'Математический анализ', collapsed: true, items: [{ autogenerate: { directory: 'higher-math/calculus' } }] },
+						{ label: 'Комбинаторика', collapsed: true, items: [{ autogenerate: { directory: 'higher-math/combinatorics' } }] },
+					],
+				},
+				{
+					label: 'Физика',
+					items: [
+						{ label: 'Обзор', slug: 'physics' },
+						{ label: 'Механика', collapsed: true, items: [{ autogenerate: { directory: 'physics/mechanics' } }] },
+						{ label: 'Молекулярная физика и термодинамика', collapsed: true, items: [{ autogenerate: { directory: 'physics/molecular-thermodynamics' } }] },
+						{ label: 'Электродинамика', collapsed: true, items: [{ autogenerate: { directory: 'physics/electrodynamics' } }] },
+						{ label: 'Колебания и волны', collapsed: true, items: [{ autogenerate: { directory: 'physics/oscillations-waves' } }] },
+						{ label: 'Оптика. Квантовая физика', collapsed: true, items: [{ autogenerate: { directory: 'physics/optics-quantum' } }] },
+						{ label: 'Подготовка к ЕГЭ', collapsed: true, items: [{ autogenerate: { directory: 'physics/ege' } }] },
+					],
+				},
+				{
+					label: 'Common Lisp',
+					items: [{ autogenerate: { directory: 'common-lisp' } }],
+				},
 			],
 		}),
 	],

@@ -1,0 +1,137 @@
+/* Узкая верхняя панель на всех страницах */
+:root {
+	--sl-nav-height: 2.5rem;
+	--sl-nav-pad-y: 0.25rem;
+}
+
+/* Главная (без бокового меню): убираем автозаголовок страницы */
+:root:not([data-has-sidebar]) .content-panel:has(#_top) {
+	padding: 0 !important;
+	border: 0 !important;
+}
+:root:not([data-has-sidebar]) #_top {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+}
+
+/* Боковое меню: виден только текущий большой раздел */
+.sidebar-content ul.top-level > li:has(> details):not(:has([aria-current='page'])) {
+	display: none;
+}
+.sidebar-content ul.top-level > li > details > summary {
+	pointer-events: none;
+}
+.sidebar-content ul.top-level > li > details > summary .caret {
+	display: none;
+}
+
+/* Содержимое главной */
+.home {
+	max-width: 40rem;
+	margin: 0 auto;
+	padding-top: 2rem;
+}
+.lead {
+	margin: 0 0 1.75rem;
+	font-size: var(--sl-text-lg);
+	line-height: 1.65;
+	color: var(--sl-color-gray-2);
+}
+.tiles {
+	display: flex;
+	flex-direction: column;
+	gap: 0.6rem;
+}
+.tile {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	padding: 0.8rem 1.1rem;
+	border: 1px solid var(--sl-color-gray-5);
+	border-radius: 0.6rem;
+	background: var(--sl-color-bg-nav);
+	color: var(--sl-color-white);
+	text-decoration: none;
+	transition: transform 0.12s, border-color 0.12s, box-shadow 0.12s;
+}
+.tile:hover {
+	transform: translateX(3px);
+	border-color: var(--sl-color-accent);
+	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+.tile-symbol {
+	flex: 0 0 2.4rem;
+	text-align: center;
+	font-family: Georgia, 'Times New Roman', serif;
+	font-style: italic;
+	font-size: 1.7rem;
+	line-height: 1;
+	color: var(--sl-color-accent);
+}
+.tile-body {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 0.1rem;
+}
+.tile-title {
+	font-size: var(--sl-text-base);
+	font-weight: 600;
+}
+.tile-text {
+	font-size: var(--sl-text-sm);
+	color: var(--sl-color-gray-2);
+}
+.tile-arrow {
+	color: var(--sl-color-gray-3);
+}
+.tile:hover .tile-arrow {
+	color: var(--sl-color-accent);
+}
+
+/* Навигация внизу страницы: «назад» и «вперёд» */
+.pagination-links {
+	display: flex !important;
+	justify-content: space-between;
+	gap: 1.5rem;
+	margin-top: 3rem;
+	padding-top: 1.25rem;
+	border-top: 1px solid var(--sl-color-gray-5);
+}
+.pagination-links:not(:has(a)) {
+	display: none !important;
+}
+.pagination-links a {
+	flex: 0 1 auto !important;
+	width: auto !important;
+	max-width: 48%;
+	padding: 0.25rem 0 !important;
+	border: 0 !important;
+	border-radius: 0 !important;
+	box-shadow: none !important;
+	font-size: var(--sl-text-sm);
+	color: var(--sl-color-gray-3) !important;
+}
+.pagination-links a[rel='next'] {
+	margin-left: auto;
+}
+.pagination-links a .link-title {
+	font-size: var(--sl-text-lg) !important;
+	font-weight: 600;
+	color: var(--sl-color-white);
+}
+.pagination-links a:hover .link-title {
+	color: var(--sl-color-accent);
+}
+.pagination-links a svg {
+	flex-shrink: 0;
+	color: var(--sl-color-accent);
+}
+/* Боковое меню заканчивается над полосой подвала */
+.sidebar-pane {
+	inset-block-end: 2.5rem !important;
+}
