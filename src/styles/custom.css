@@ -37,8 +37,8 @@
 }
 .lead {
 	margin: 0 0 1.75rem;
-	font-size: var(--sl-text-lg);
-	line-height: 1.65;
+	font-size: var(--sl-text-base);
+	line-height: 1.75;
 	color: var(--sl-color-gray-2);
 }
 .tiles {
