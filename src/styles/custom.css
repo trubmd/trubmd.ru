@@ -135,3 +135,21 @@
 .sidebar-pane {
 	inset-block-end: 2.5rem !important;
 }
+
+/* Заголовки: без значков-ссылок и поменьше */
+.sl-anchor-link {
+	display: none !important;
+}
+:root {
+	--sl-text-h1: 2rem !important;
+	--sl-text-h2: 1.5rem !important;
+	--sl-text-h3: 1.25rem !important;
+	--sl-text-h4: 1.1rem !important;
+	--sl-text-h5: 1rem !important;
+}
+
+/* Значки-ссылки у заголовков: скрываем во всех вариантах разметки */
+.sl-heading-wrapper > a,
+.sl-markdown-content [class*='anchor'] {
+	display: none !important;
+}
