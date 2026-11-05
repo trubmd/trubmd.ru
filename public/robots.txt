@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://trubmd.ru/sitemap-index.xml

@@ -14,6 +14,7 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'trubmd.ru',
+			description: 'Сайт учителя математики Труб М.Д.',
 			favicon: '/favicon.png',
 			customCss: ['./src/styles/custom.css'],
 			components: {
@@ -23,11 +24,25 @@ export default defineConfig({
 			locales: {
 				root: { label: 'Русский', lang: 'ru' },
 			},
-			head: [
+						head: [
 				{
 					tag: 'link',
 					attrs: { rel: 'stylesheet', href: '/katex/katex.min.css' },
 				},
+				{
+					tag: 'script',
+					attrs: { type: 'application/ld+json' },
+					content: JSON.stringify({
+						'@context': 'https://schema.org',
+						'@type': 'WebSite',
+						name: 'trubmd.ru',
+						url: 'https://trubmd.ru/',
+						inLanguage: 'ru',
+						description: 'Сайт учителя математики и физики Труб М.Д.',
+						author: { '@type': 'Person', name: 'Труб М.Д.' },
+					}),
+				},
+				// { tag: 'meta', attrs: { name: 'yandex-verification', content: 'ВАШ_КОД' } },
 			],
 			sidebar: [
 				{ label: '🏠 На главную', link: '/' },
